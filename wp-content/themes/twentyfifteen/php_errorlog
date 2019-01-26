@@ -1,0 +1,6 @@
+[25-Nov-2017 21:35:54 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/twentyfifteen/404.php on line 10
+[25-Nov-2017 21:37:07 CST6CDT] PHP Fatal error:  Call to undefined function _e() in /home/tcolabs8/public_html/wp-content/themes/twentyfifteen/author-bio.php on line 12
+[25-Nov-2017 21:38:10 CST6CDT] PHP Fatal error:  Call to undefined function _e() in /home/tcolabs8/public_html/wp-content/themes/twentyfifteen/author-bio.php on line 12
+[25-Nov-2017 21:54:55 CST6CDT] PHP Fatal error:  Call to undefined function do_action() in /home/tcolabs8/public_html/wp-content/themes/twentyfifteen/footer.php on line 23
+[14-Feb-2018 05:41:56 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/twentyfifteen/archive.php on line 19
+[14-Feb-2018 05:41:58 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/twentyfifteen/archive.php on line 19

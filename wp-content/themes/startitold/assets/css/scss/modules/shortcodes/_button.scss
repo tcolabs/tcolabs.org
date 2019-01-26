@@ -1,0 +1,305 @@
+.qodef-btn {
+    display: inline-block;
+    position: relative;
+    outline: none;
+    font-style: normal;
+    font-weight: 800;
+    font-family: inherit;
+    padding: 0 35px;
+    font-size: 13px;
+    line-height: 48px;
+	height: 48px;
+	text-transform:uppercase;
+	letter-spacing:1px;
+	@include qodefBorderRadiusPredefined();
+	border: 2px solid #e6e6e6;
+    color: #707070;
+    background-color: transparent;
+
+    @include qodefTransition(color 0.2s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out);
+    @include qodefBoxSizing(initial);
+	
+	&:not(.qodef-btn-custom-hover-color):hover {
+		//important because of inline color attribute. :not is used so we don't have to use important in JS
+		color: #fff !important;
+	}
+
+	&:not(.qodef-btn-custom-hover-bg):hover {
+		//important because of inline color attribute. :not is used so we don't have to use important in JS
+		background-color: $first-main-color !important;
+	}
+
+	&:not(.qodef-btn-custom-border-hover):hover {
+		//important because of inline color attribute. :not is used so we don't have to use important in JS
+		border-color: $first-main-color !important;
+	}
+
+    &.qodef-btn-solid {
+        background-color: $first-main-color;
+        border: none;
+        color: #fff;
+
+        &:not(.qodef-btn-custom-hover-color):hover {
+            //important because of inline color attribute. :not is used so we don't have to use important in JS
+            color: #fff !important;
+        }
+
+        &:not(.qodef-btn-custom-hover-bg):hover {
+            //important because of inline color attribute. :not is used so we don't have to use important in JS
+            background-color: #212121 !important;
+        }
+
+        &:not(.qodef-btn-custom-border-hover):hover {
+            //important because of inline color attribute. :not is used so we don't have to use important in JS
+            border-color: #212121 !important;
+        }
+		
+		height:52px;
+		line-height:52px;
+    }
+
+    &.qodef-btn-outline {
+        border: 2px solid #e6e6e6;
+        color: #707070;
+        background-color: transparent;
+
+        &:not(.qodef-btn-custom-hover-color):hover {
+            //important because of inline color attribute. :not is used so we don't have to use important in JS
+            color: #707070 !important;
+        }
+
+        &:not(.qodef-btn-custom-hover-bg):hover {
+            //important because of inline color attribute. :not is used so we don't have to use important in JS
+            background-color: transparent!important;
+        }
+
+        &:not(.qodef-btn-custom-border-hover):hover {
+            //important because of inline color attribute. :not is used so we don't have to use important in JS
+            border-color: #e6e6e6 !important;
+        }
+    }
+	
+	&.qodef-btn-icon{
+        padding:0;
+		vertical-align:middle;
+		.qodef-btn-text{
+			display:inline-block;
+			padding:0 30px;
+			margin-right:0;
+			vertical-align:middle;
+			float:left;
+			line-height:inherit;
+		}
+
+	  	@include phone-landscape {
+		  .qodef-btn-text {
+			padding: 0 15px;
+		  }
+		}
+		
+		.qodef-btn-text-icon{
+			display:inline-block;
+			width:56px;
+			text-align:center;
+			font-size:23px;
+			border-left-width:2px;
+			border-left-style:solid;
+			border-left-color: inherit;
+			vertical-align:middle;
+			float:left;
+			line-height:inherit;
+			border-radius: 0 3px 3px 0;
+			position:relative;
+			overflow:hidden;
+		}
+		
+		.qodef-btn-text-icon i,
+		.qodef-btn-text-icon span{
+			display:block;
+			position:relative;
+			left:0;
+			line-height:inherit;
+			@include qodefTransition(left 0.2s ease-out);
+		}
+		
+		.qodef-btn-text-icon:before{
+			display:inline-block;
+			width:100%;
+			height:100%;
+			position:absolute;
+			left:-100%;
+			top:0;
+			content: "\e079";
+			font-family: 'simple-line-icons';
+			overflow:hidden;
+			font-weight:normal;
+			@include qodefTransition(left 0.2s ease-out);
+		}
+
+		
+		&:hover .qodef-btn-text-icon:before{
+			left:0;
+		}
+		
+		&:hover .qodef-btn-text-icon i,
+		&:hover .qodef-btn-text-icon span{
+			left:100%;
+		}
+		
+		&:not(.qodef-btn-custom-border-hover).qodef-btn-solid{
+			border:none;
+		}
+		
+		&:not(.qodef-btn-custom-hover-bg).qodef-btn-solid .qodef-btn-text-icon{
+			background-color: #9fd323;
+		}
+		&:not(.qodef-btn-custom-border-hover).qodef-btn-solid .qodef-btn-text-icon{
+			border:none;
+		}
+		
+		&:not(.qodef-btn-custom-hover-bg).qodef-btn-solid:hover{
+			background-color: $first-main-color !important;
+		}
+		&:not(.qodef-btn-custom-hover-color).qodef-btn-solid:hover{
+			color: #fff !important;
+		}
+		
+		&.qodef-btn-small,
+		&.qodef-btn-large,
+		&.qodef-btn-huge,
+		&.qodef-btn-huge-full-width,
+		&.qodef-btn-huge-full-width {
+			padding:0;
+		}
+		
+    }
+
+    &.qodef-btn-small {
+        font-size: 13px;
+		padding: 0 28px;
+		line-height: 43px;
+		height: 43px;
+		&.qodef-btn-solid{
+			height: 47px;
+			line-height:47px;
+		}
+    }
+
+    &.qodef-btn-medium {
+        //same as default
+    }
+
+    &.qodef-btn-large {
+        font-size: 13px;
+		padding: 0 42px;
+		line-height: 52px;
+		height: 52px;
+		&.qodef-btn-solid{
+			height: 56px;
+			line-height:56px;
+		}
+    }
+
+    &.qodef-btn-huge,
+    &.qodef-btn-huge-full-width {
+        font-size: 15px;
+        padding: 0 50px;
+		line-height: 54px;
+		height: 54px;
+		
+		&.qodef-btn-solid{
+			height: 58px;
+			line-height:58px;
+		}
+    }
+
+    &.qodef-btn-huge-full-width {
+        width:100%;
+        text-align: center;
+		line-height: 56px;
+		height: 56px;
+		
+		&.qodef-btn-solid{
+			height: 60px;
+			line-height:60px;
+		}
+		
+		.qodef-btn-text-icon{
+			float:right;
+		}
+    }
+
+  &.qodef-btn-hover-animation:not(.qodef-btn-outline) {
+
+	overflow:hidden;
+	position:relative;
+	-webkit-transition: color .2s ease-out,background-color .2s ease-out, border-color .2s ease-out;
+	transition: color .2s ease-out,background-color .2s ease-out, border-color .2s ease-out;
+
+	.qodef-btn-text{
+	  z-index:9;
+	  position:relative;
+	}
+
+	.qodef-animation-overlay {
+	  position: absolute;
+	  display:inline-block;
+	  vertical-align:middle;
+	  padding: 0;
+	  top: -100%;
+	  left: 0;
+	  height:300%;
+	  width:100%;
+	  border-radius: 100%;
+	  -webkit-transform: scale(0);
+	  transform: scale(0);
+	  opacity: 0;
+	  -webkit-transition: -webkit-transform .3s ease-out, opacity .2s ease-out;
+	  transition: transform .3s ease-out, opacity .2s ease-out;
+	}
+
+	&:not(.qodef-btn-custom-hover-bg):not(.qodef-btn-solid){
+	  .qodef-animation-overlay {
+		background-color: $first-main-color;
+	  }
+	}
+	&.qodef-btn-solid:not(.qodef-btn-custom-hover-bg){
+	  .qodef-animation-overlay {
+		background-color: #212121;
+	  }
+	}
+	&:hover {
+	  -ms-transform:translateZ(0);
+	  -webkit-transform:translateZ(0);
+	  transform:translateZ(0);
+
+	  &:not(.qodef-btn-custom-hover-bg):not(.qodef-btn-solid) {
+		background-color: transparent !important;
+	  }
+
+	  &.qodef-btn-solid:not(.qodef-btn-custom-hover-bg){
+		background-color: $first-main-color !important;
+	  }
+		.qodef-animation-overlay {
+		  -webkit-transform: scale(1.3);
+		  transform: scale(1.3);
+		  opacity: 1;
+		  -webkit-transition: -webkit-transform .2s ease-out, opacity .2s ease-out;
+		  transition: transform .2s ease-out, opacity .2s ease-out;
+	  	}
+	}
+
+  }
+
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0){
+  .qodef-btn-hover-animation {
+	display: inline-table;
+  }
+}
+
+input[type=submit].qodef-btn,
+button.qodef-btn {
+    cursor: pointer;
+}

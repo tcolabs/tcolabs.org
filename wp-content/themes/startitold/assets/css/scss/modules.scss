@@ -1,0 +1,64 @@
+//global partials
+@import 'variables';
+@import 'mixins';
+@import 'global';
+@import 'animations';
+@import 'spinners';
+
+@import 'common';
+@import 'modules/header/header';
+@import 'modules/footer/footer';
+@import 'modules/title/title';
+@import 'modules/sidearea/sidearea';
+@import 'modules/fullscreenmenu/fullscreenmenu';
+@import 'modules/search/search';
+@import 'modules/portfolio/portfolio';
+
+
+//Shortcode sass files
+@import 'modules/shortcodes/elements-holder';
+@import 'modules/shortcodes/team';
+@import 'modules/shortcodes/calltoaction';
+@import 'modules/shortcodes/counter';
+@import 'modules/shortcodes/icon';
+@import 'modules/shortcodes/countdown';
+@import 'modules/shortcodes/message';
+@import 'modules/shortcodes/ordered-list';
+@import 'modules/shortcodes/unordered-list';
+@import 'modules/shortcodes/icon-list-item';
+@import 'modules/shortcodes/progress-bar';
+@import 'modules/shortcodes/testimonials';
+@import 'modules/shortcodes/pricing-tables';
+@import 'modules/shortcodes/piechartbasic';
+@import 'modules/shortcodes/piechartwithicon';
+@import 'modules/shortcodes/piechartdoughnut';
+@import 'modules/shortcodes/piechartpie';
+@import 'modules/shortcodes/tabs';
+@import 'modules/shortcodes/button';
+@import 'modules/shortcodes/accordions';
+@import 'modules/shortcodes/google-map';
+@import 'modules/shortcodes/separator';
+@import 'modules/shortcodes/single-image';
+@import 'modules/shortcodes/blog-list';
+@import 'modules/shortcodes/button';
+@import 'modules/shortcodes/carousels';
+@import 'modules/shortcodes/blockquote';
+@import 'modules/shortcodes/imagegallery';
+@import 'modules/shortcodes/videobutton';
+@import 'modules/shortcodes/dropcaps';
+@import 'modules/shortcodes/portfolio';
+@import 'modules/shortcodes/icon-with-text';
+@import 'modules/shortcodes/socialshare';
+@import 'modules/shortcodes/underline-icon-box';
+@import 'modules/shortcodes/image-with-icon';
+@import 'modules/shortcodes/process';
+@import 'modules/shortcodes/fullwidth-slider';
+@import 'modules/shortcodes/particles';
+@import 'modules/shortcodes/separator-with-text';
+@import 'modules/shortcodes/slider';
+@import 'modules/widgets/sticky-sidebar';
+
+//Widget sass files
+@import 'modules/widgets/twitter';
+@import 'modules/widgets/widgets';
+

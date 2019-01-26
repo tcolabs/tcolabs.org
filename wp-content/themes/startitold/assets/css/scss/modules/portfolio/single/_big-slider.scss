@@ -1,0 +1,34 @@
+/* ==========================================================================
+# Portfolio Single Big Slider - begin
+========================================================================== */
+
+.big-slider {
+
+	.qodef-big-image-holder {
+		margin-bottom: 44px;
+	}
+	
+	.qodef-big-image-holder img,
+	.qodef-big-image-holder a{
+		display:block;
+	}
+	
+	.qodef-portfolio-content,
+	.qodef-portfolio-info-holder{
+		margin: 22px 0 0 0;
+	}
+
+	.qodef-portfolio-media .qodef-portfolio-single-media {
+		margin-bottom: 20px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	
+
+}
+
+/* ==========================================================================
+# Portfolio Single Big Slider - end
+========================================================================== */

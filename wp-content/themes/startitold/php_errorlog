@@ -1,0 +1,5 @@
+[28-Mar-2016 01:01:15 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/startit/index.php on line 1
+[29-Apr-2016 01:42:11 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/startit/index.php on line 1
+[30-May-2016 00:51:51 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/startit/index.php on line 1
+[18-Jul-2016 02:57:09 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/startit/index.php on line 1
+[19-Aug-2016 01:34:04 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/startitold/index.php on line 1

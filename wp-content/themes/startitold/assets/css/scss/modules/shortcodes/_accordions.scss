@@ -1,0 +1,153 @@
+/* ==========================================================================
+   Accordion shortcode start styles
+   ========================================================================== */
+.qodef-accordion-holder{
+	position: relative;
+    
+    .qodef-accordion-content{
+        margin: 0;
+        padding: 23px 0;
+
+        .wpb_row {
+            margin-bottom: 0;
+        }
+        .wpb_content_element {
+            margin-bottom: 0;
+        }
+        ul.wpb_thumbnails-fluid > li {
+            margin-bottom: 0;
+        }
+        .wpb_button {
+            margin-bottom: 0;
+        }
+    }
+    .qodef-title-holder {
+        cursor: pointer;
+        position: relative;
+        font-weight: 700;
+        color: #616161;
+        padding: 0;
+        margin: 16px 0 0;
+        box-sizing: border-box;
+        @include qodefTableLayout();
+        @include qodefBorderRadiusPredefined();
+        @include qodefTransform(translateZ(0px));        
+        @include qodefTransition(background-color 0.15s ease-out, border-color 0.15s ease-out, color 0.15s ease-out); 
+        
+        &:first-child{
+            margin: 0;
+        }
+        
+        .qodef-tab-title {
+            color: inherit;
+            line-height: inherit;
+            @include qodefTableCellLayout();
+            padding: 0 10px 0 68px;
+            text-align: left;
+        }
+
+        .qodef-tab-title-inner{
+            color: inherit;
+            line-height: inherit;
+        }
+        
+        .qodef-accordion-mark {
+            @include qodefTableCellLayout();
+            display: block;
+            width: 48px;
+            height: 48px;
+            line-height:48px;
+            color: #fff;
+            background-color: #f6f6f5;
+            box-sizing: border-box;
+            @include qodefTransition(background-color 0.15s ease-out, border-color 0.15s ease-out);
+            @include qodefBorderRadius(3px 0 0 3px);
+        }
+        
+        .qodef-accordion-mark-icon {
+            position: relative;
+            display: block;
+            width:100%;
+            height: 100%;
+            line-height:inherit;
+            text-align: center;
+            font-size: 24px;
+            @include qodefTransition(color 0.15s ease-out);
+        }
+        .qodef-accordion-mark-icon span{
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height:inherit;
+            @include qodefTransition(opacity 0.15s ease-out);
+        }
+        .qodef-accordion-mark-icon .icon_minus-06{
+            opacity: 0;
+        }
+        .qodef-accordion-mark-icon .icon_plus{
+            opacity: 1;
+        }
+        
+        
+    }
+    .qodef-title-holder.ui-state-active,
+    .qodef-title-holder.ui-state-hover{
+        color: $first-main-color;	
+        
+        .qodef-accordion-mark{
+            color: #fff;
+            background-color: $first-main-color;
+            border-color: $first-main-color;
+        }
+    }
+    .qodef-title-holder.ui-state-active{
+        
+        .qodef-accordion-mark-icon .icon_minus-06{
+             opacity: 1;
+        }
+        .qodef-accordion-mark-icon .icon_plus{
+            opacity: 0;
+        }
+    }
+}
+
+.qodef-accordion-holder.qodef-initial{
+    
+    .qodef-title-holder .qodef-tab-title{
+        padding: 0 0 0 60px;
+        @include qodefTableLayout;
+        box-sizing: border-box;
+        text-align : left;
+        
+        span.qodef-tab-title-inner{
+            position: relative;
+            @include qodefTableCellLayout;
+            text-align : left;
+        }
+    }
+    
+}
+
+.qodef-accordion-holder.qodef-boxed{
+    .qodef-title-holder{
+        text-align: left;
+        padding: 0;
+        background-color: #f6f6f5;
+        border: 0;
+        
+        .qodef-accordion-mark{
+            border: 0;
+            background-color: $first-main-color;
+        }
+    }
+    .qodef-title-holder.ui-state-active,
+    .qodef-title-holder.ui-state-hover{
+        color: #616161;
+        background-color: #f5f5f5;
+    }
+    
+} 
+
+
+

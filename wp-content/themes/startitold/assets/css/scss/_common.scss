@@ -1,0 +1,763 @@
+@import 'variables';
+@import 'mixins';
+
+/* ==========================================================================
+   7. Comments styles - start
+   ========================================================================== */
+
+.qodef-comment-holder {
+	padding: 20px 0 32px;
+	margin: 0 0 0;
+	border-top: 1px solid #dadada;
+	border-bottom: 1px solid #dadada;
+
+  	.qodef-comment {
+	  padding: 28px 25px;
+	  border: 1px solid #cfcfcf;
+	  @include qodefBorderRadiusPredefined();
+	  @include qodefBoxSizing(border-box);
+
+	  &.qodef-pingback-comment{
+		.qodef-comment-text{
+		  padding:0;
+		}
+	  }
+	}
+
+	.qodef-comment-image {
+		display: block;
+		width: 75px;
+		height: 75px;
+		float: left;
+
+	  	img {
+		  @include qodefBorderRadius(50%);
+		}
+	}
+	.qodef-comment-text {
+		padding: 0 0 0 100px;
+		min-height: 75px;
+
+		.qodef-comment-info {
+			display: inline-block;
+			width: 100%;
+			vertical-align: middle;
+		}
+
+	  	.qodef-comment-date-holder {
+		  	margin-bottom: 7px;
+		}
+
+	  	.qodef-comment-date {
+		  	font-size: 13px;
+		  	font-weight: 500;
+		  	color: $first-main-color;
+		}
+
+		.replay,
+		.comment-reply-link,
+		.comment-edit-link {
+			float: right;
+			margin-left: 10px;
+		}
+
+		.comment-reply-link:after {
+			content: "\e051";
+			font-family: "simple-line-icons", sans-serif;
+			padding-left: 5px;
+		}
+
+		.qodef-comment-name{
+			float: left;
+		}
+	}
+
+}
+.qodef-comment-list {
+	list-style: none;
+	position: relative;
+	z-index: 150;
+	padding: 0;
+	margin: 21px 0 0;
+
+	li {
+		display: inline-block;
+		position: relative;
+		width: 100%;
+
+	  ul.children li{
+		margin: 0 0 17px;
+	  }
+	}
+
+	> li {
+		margin: 0 0 17px;
+	}
+
+	> li:last-child {
+	  margin: 0;
+	}
+
+	.children {
+		margin: 30px 0 0 0;
+		padding: 0 0 0 70px;
+	}
+
+}
+
+.qodef-comment-form{
+  	margin: 28px 0 40px;
+}
+
+.comment-respond{
+	.comment-reply-title{
+		font-size: 15px;
+		line-height: 1.5em;
+		font-weight: 600; /*font size changed because of the h-tags that are fixed by wordpress*/
+		margin-bottom: 30px;
+		a{
+			font-size: 16px;
+		}
+	}
+
+	.logged-in-as{
+		margin-bottom: 10px;
+	}
+}
+
+.qodef-comment-text{
+
+	.comment-respond{
+		margin: 20px 0;
+	}
+}
+
+%input-style{
+	width: 100%;
+	margin-bottom: 24px;
+	padding: 10px 15px;
+	border: 1px solid #cfcfcf;
+	outline: 0;
+	font-family: Raleway, sans-serif;
+  	font-weight: 500;
+	font-size: 14px;
+	background-color: #fff;
+	color: #797979;
+	@include qodefBoxSizing(border-box);
+  	@include qodefBorderRadiusPredefined();
+
+	&:focus{
+		border: 1px solid #A0A0A0;
+	}	
+}
+
+.wpcf7-form-control{
+	&.wpcf7-text,
+	&.wpcf7-number,
+	&.wpcf7-date,
+	&.wpcf7-textarea,
+	&.wpcf7-select,
+	&.wpcf7-quiz{
+		@extend %input-style;
+	}
+  	&.wpcf7-textarea {
+	  	height: 330px;
+	}
+}
+
+div.wpcf7 img.ajax-loader {
+  display: none;
+}
+
+div.wpcf7-validation-errors {
+  border: 2px solid #bdbdbd;
+  color: #bdbdbd;
+}
+
+#respond textarea,
+#respond input[type='text'],
+.post-password-form input[type='password']{
+	@extend %input-style;
+}
+
+#submit_comment,
+.post-password-form input[type='submit'],
+input.wpcf7-form-control.wpcf7-submit,
+.qodef-sidebar #searchform input[type="submit"],
+footer input[type="submit"],
+.qodef-woocommerce-page #reviews input[type='submit'],
+.qodef-woocommerce-page .woocommerce-message a{
+	display: inline-block;
+	width: auto;
+	height: 52px;
+	line-height: 50px;
+  	padding: 0 35px;
+  	border: 2px solid $first-main-color;
+	font-size: 13px;
+  	font-weight: 800;
+	font-family: inherit;
+  	letter-spacing:1px;
+	color: #fff;
+	background-color: $first-main-color;
+	cursor: pointer;
+	@include qodefTransition(color 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out);
+  	text-transform: uppercase;
+  	@include qodefBorderRadiusPredefined();
+
+	&:hover{
+		background-color: #212121;
+		color: #fff;
+		border-color: #212121;
+	}
+  	&:focus {
+	  	outline: none;
+	}
+}
+
+.qodef-input-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5d5d5d;
+  position: relative;
+  padding-left: 18px;
+  box-sizing: border-box;
+  margin-bottom: 3px;
+  display: inline-block;
+}
+
+.qodef-input-title:before {
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background-color: #b2dd4c;
+  left: 0;
+  top: 4px;
+  @include qodefBorderRadiusPredefined();
+}
+
+/* ==========================================================================
+   7. Comments styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   8. Pagination styles - start
+   ========================================================================== */
+
+.qodef-pagination {
+
+	display: inline-block;
+	width: 100%;
+	vertical-align: middle;
+  	margin-bottom: 45px;
+
+	li {
+		float: left;
+		text-align: center;
+		margin: 0 2px 4px 2px;
+		display: block;
+	 	border: 2px solid #e6e6e6;
+	  	@include qodefBorderRadiusPredefined();
+	  	@include qodefTransition(background-color 0.15s ease-out, border-color 0.15s ease-out);
+
+		a,
+		&.active span {
+			position: relative;
+			display: inline-block;
+			width: 43px;
+			height: 43px;
+			line-height: 43px;
+			margin: 0;
+			vertical-align: middle;
+			text-decoration: none;
+			cursor: pointer;
+			white-space: nowrap;
+			box-sizing: content-box;
+		  	color: #707070;
+
+		}
+
+	  	&.active span {
+		  	color: #fff;
+		}
+
+	  	&.active,
+		&:hover {
+		  background-color: #b2dd4c;
+		  color: #fff;
+		  border-color: #b2dd4c;
+		}
+
+	  	&:hover a{
+		  color: #fff;
+		}
+
+	  &.qodef-pagination-prev,
+	  &.qodef-pagination-next {
+		font-size: 11px;
+	  }
+	}
+}
+
+
+/* ==========================================================================
+   8. Pagination styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   9. General slider styles start
+   ========================================================================== */
+.qodef-owl-slider {
+
+	.owl-buttons {
+
+		.owl-prev {
+			position: absolute;
+			top: 50%;
+			@include qodefTransform(translateY(-50%));
+			left: 0;
+		}
+
+		.owl-next {
+			position: absolute;
+			top: 50%;
+			@include qodefTransform(translateY(-50%));
+			right: 0;
+		}
+
+		.qodef-prev-icon,
+		.qodef-next-icon {
+			display: inline-block;
+			width: 55px;
+			height: 55px;
+			@include qodefBorderRadiusPredefined();
+			text-align: center;
+		  	background-color: rgba(255, 255, 255, 0.35);
+		  	@include qodefTransition(background-color 0.2s ease-out);
+
+			i {
+				font-size: 16px;
+				line-height: 55px;
+				color: #fff;
+			}
+
+		}
+
+	  	.qodef-prev-icon {
+		  @include qodefBorderRadius(0 3px 3px 0);
+		}
+
+	  	.qodef-next-icon {
+		  @include qodefBorderRadius(3px 0 0 3px);
+		}
+
+		.qodef-prev-icon:hover,
+		.qodef-next-icon:hover {
+		  background-color: rgba(255, 255, 255, 0.4);
+		}
+
+	}
+
+	.owl-pagination {
+		text-align: center;
+
+		.owl-page {
+			display: inline-block;
+		}
+
+		.owl-page span {
+			display: inline-block;
+			width: 12px;
+			height: 12px;
+			margin: 3px;
+			filter: Alpha(Opacity=50);
+			opacity: 0.5;
+			-webkit-border-radius: 20px;
+			-moz-border-radius: 20px;
+			border-radius: 20px;
+			background: #e3e3e3;
+		}
+
+		.owl-page.active span {
+			opacity: 1;
+		}
+
+	}
+
+}
+
+/* ==========================================================================
+   9.Owl Slider (Blog single, Portfolio single) - end
+   ========================================================================== */
+
+/* ==========================================================================
+   10. 404 styles - start
+   ========================================================================== */
+
+.qodef-404-page{
+	padding: 0;
+}
+
+.qodef-page-not-found{
+	margin: 80px 0;
+
+	h2{
+		margin-bottom: 30px;
+	}
+
+	h4{
+		margin-bottom: 30px;
+	}
+}
+
+/* ==========================================================================
+   10. 404 styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   11. Back to Top styles - start
+   ========================================================================== */
+
+#qodef-back-to-top{   
+    position: fixed;
+	width: 46px;
+	right: 46px;
+    bottom: 65px;
+    margin: 0;
+    z-index: 10000;
+    @include qodefTransition(opacity 0.15s ease-out, visibility 0.15s ease-out);
+    opacity: 0;
+    visibility: hidden;
+}
+#qodef-back-to-top.off{
+    opacity: 0;
+    visibility: hidden;
+}
+    
+#qodef-back-to-top.on{
+    opacity: 1;
+    visibility: visible;
+}
+
+#qodef-back-to-top > span {
+	width: 46px;
+	height: 46px;
+	line-height: 43px;
+  	@include qodefBorderRadiusPredefined();
+	text-align:center;
+    display: block;
+	color: #fff;
+    font-size: 12px;
+	background-color: #373737;
+  	opacity: 0.9;
+    @include qodefTransition(background-color 0.15s ease-out, color 0.15s ease-out, opacity 0.15s ease-out);
+	box-sizing: border-box;
+}
+
+#qodef-back-to-top span span {
+	display: block;
+	line-height: inherit;
+}
+
+#qodef-back-to-top:hover > span {
+	background-color: #c1e470;
+  	opacity: 1;
+}
+    
+/* ==========================================================================
+   11. Back to Top styles - end
+   ========================================================================== */
+
+/* ==========================================================================
+   12. Self Hosted Video styles - start
+   ========================================================================== */
+.qodef-self-hosted-video-holder{
+	.qodef-video-wrap{
+		.mejs-container,
+		.mejs-overlay-play{
+			height: 100% !important; /*!important because of the inline style*/
+			width: 100% !important; /*!important because of the inline style*/
+		}
+	  	.mejs-offscreen {
+		  display: none;
+		}
+	}
+}
+
+.wpb_row, .wpb_content_element,
+ul.wpb_thumbnails-fluid > li,
+.last_toggle_el_margin, .wpb_button {
+	margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   12. Self Hosted Video styles - end
+   ========================================================================== */
+
+
+/* ==========================================================================
+   13. Pretty photo navigation
+   ========================================================================== */
+body div.pp_default a.pp_next,
+body div.pp_default a.pp_previous{
+  margin: -33px 0 0 !important;
+  font-size: 22px !important;
+  width: 66px !important;
+  height: 66px !important;
+  line-height: 66px !important;
+  color: #fff !important;
+  text-align: center;
+  @include qodefBorderRadiusPredefined();
+  position: absolute;
+  top: 50%;
+  z-index: 99;
+  background-color: rgba(255, 255, 255, 0.35) !important;
+  @include qodefTransition(background-color 0.2s ease-out);
+}
+
+body div.pp_default a.pp_previous{
+  @include qodefBorderRadius(0 3px 3px 0);
+}
+
+body div.pp_default a.pp_next {
+  @include qodefBorderRadius(3px 0 0 3px);
+}
+
+body div.pp_default a.pp_next:hover,
+body div.pp_default a.pp_previous:hover{
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+body div.pp_default a.pp_previous {
+  left: 0 !important;
+}
+
+body div.pp_default a.pp_next {
+  right: 0 !important;
+}
+
+
+/* ==========================================================================
+   13. Pretty photo navigation end
+   ========================================================================== */
+
+/* ==========================================================================
+   14. Layer slider navigation - start
+   ========================================================================== */
+.ls-noskin {
+
+  /* Important properties are set because layer slider css is loaded after theme stylesheet */
+
+  .ls-nav-prev,
+  .ls-nav-next {
+	display: inline-block !important;
+	@include qodefBorderRadiusPredefined();
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	z-index: 99;
+	@include qodefTransform(translateY(-50%));
+	width: 66px;
+	height: 66px;
+	background-color: rgba(255, 255, 255, 0.35);
+	@include qodefTransition(background-color 0.2s ease-out);
+  }
+
+  .ls-nav-prev:hover,
+  .ls-nav-next:hover {
+	background-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .ls-nav-prev {
+	left: 0;
+  }
+
+  .ls-nav-next {
+	right: 0;
+  }
+
+  .ls-nav-prev:before,
+  .ls-nav-next:before {
+	content: "";
+	font-family: FontAwesome, sans-serif;
+	font-size: 20px;
+	line-height: 66px;
+	color: #fff;
+  }
+
+  .ls-nav-prev:before {
+	content: "\f053";
+  }
+
+  .ls-nav-next:before {
+	content: "\f054";
+  }
+
+  .ls-bottom-nav-wrapper {
+	display: inline-block !important;
+	position: absolute;
+	bottom: 60px;
+	left: 50%;
+	@include qodefTransform(translate3d(-50%, 0, 0) !important);
+  }
+
+  .ls-bottom-slidebuttons {
+	position: relative;
+	display: inline-block;
+	line-height: 0;
+  }
+
+  .ls-bottom-slidebuttons {
+	a {
+	  display: inline-block !important;
+	  width: 15px;
+	  height: 15px;
+	  margin: 4px;
+	  filter: Alpha(Opacity=50);
+	  opacity: 0.5;
+	  @include qodefBorderRadius(20px);
+	  background: #fff;
+	  visibility: visible !important;
+	  position: relative;
+	  vertical-align: middle;
+	}
+	a.ls-nav-active {
+	  opacity: 1;
+	  width: 12px;
+	  height: 12px;
+	  margin: 4px 7px;
+	}
+
+	a.ls-nav-active:before {
+	  content: "";
+	  width: 12px;
+	  height: 12px;
+	  position: absolute;
+	  border: 2px solid #fff;
+	  display: inline-block;
+	  left: -4px;
+	  top: -4px;
+	  padding: 2px;
+	  @include qodefBorderRadius(50%);
+	  @include qodefTransition(
+		background-color 0.15s ease-out,
+		border-color 0.15s ease-out,
+		opacity 0.15s ease-out,
+		width 0.15s ease-out,
+		height 0.15s ease-out
+	  );
+	}
+  }
+
+  @include phone-landscape {
+	.ls-nav-prev,
+	.ls-nav-next {
+	  display: none !important;
+	}
+
+	.ls-bottom-slidebuttons {
+	  display: none !important;
+	}
+  }
+}
+
+/* ==========================================================================
+   14. Layer slider navigation - end
+   ========================================================================== */
+
+
+/* ==========================================================================
+   15. VC image gallery css override - start
+   ========================================================================== */
+
+/* Important is placed because vc styles are loaded after theme */
+
+.wpb_image_grid .wpb_image_grid_ul .isotope-item {
+  margin: 0 !important;
+}
+
+.wpb_image_grid .wpb_image_grid_ul a {
+  position: relative;
+}
+
+.wpb_image_grid .wpb_image_grid_ul a:before {
+  content: "\f002";
+  font-family: FontAwesome, sans-serif;
+  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 99;
+  @include qodefTransform(translate3d(-50%, -50%, 0));
+  color: #fff;
+  opacity: 0;
+  @include qodefTransition(opacity 0.3s ease-out);
+}
+
+.wpb_image_grid .wpb_image_grid_ul a:hover:before {
+  opacity: 1;
+}
+
+.wpb_image_grid .wpb_image_grid_ul a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  @include qodefTransition(opacity 0.3s ease-out);
+}
+
+.wpb_image_grid .wpb_image_grid_ul a:hover:after {
+  opacity: 1;
+}
+
+/* VC image gallery css override - end */
+
+.qodef-parallax-section-holder.qodef-vertical-middle-align{
+  padding-left:0;
+  padding-right:0;
+  margin-left:0;
+  margin-right:0;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000; /* Above WP toolbar. */
+}
+
+.wpb_single_image .vc_figure {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   15. VC image gallery css override - end
+   ========================================================================== */

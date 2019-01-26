@@ -1,0 +1,79 @@
+@import 'variables';
+@import 'mixins';
+
+@include laptop-landscape {
+  .qodef-blog-holder.qodef-masonry-full-width{
+    article,
+    .qodef-blog-masonry-grid-sizer{
+      width: 23.5%;
+    }
+  }
+}
+
+@media only screen and (min-width: $ipad-portrait) and (max-width: $ipad-landscape) {
+  .qodef-two-columns-75-25,
+  .qodef-two-columns-25-75,
+  .qodef-two-columns-66-33,
+  .qodef-two-columns-33-66 {
+    .qodef-blog-holder.qodef-blog-type-masonry{
+      article,
+      .qodef-blog-masonry-grid-sizer{
+        width: 49%;
+      }
+    }
+  }
+}
+
+@include ipad-landscape {
+  .qodef-blog-holder.qodef-masonry-full-width{
+    article,
+    .qodef-blog-masonry-grid-sizer{
+      width: 32%;
+    }
+  }
+}
+
+@include ipad-portrait {
+  .qodef-blog-holder.qodef-blog-type-masonry{
+    article,
+    .qodef-blog-masonry-grid-sizer{
+      width: 49%;
+    }
+  }
+
+  .qodef-blog-holder.qodef-masonry-full-width{
+    article,
+    .qodef-blog-masonry-grid-sizer{
+      width: 49%;
+    }
+  }
+}
+
+@include phone-landscape {
+  .qodef-blog-holder.qodef-blog-type-masonry{
+    article,
+    .qodef-blog-masonry-grid-sizer{
+      width: 100%;
+    }
+  }
+
+  .qodef-blog-holder.qodef-masonry-full-width{
+    article,
+    .qodef-blog-masonry-grid-sizer{
+      width: 100%;
+    }
+  }
+}
+
+@include phone-portrait {
+  .qodef-post-info-bottom {
+    .qodef-single-tags-holder {
+      display: block;
+      margin-bottom: 20px;
+    }
+    .qodef-blog-share {
+      display: block;
+      float: none;
+    }
+  }
+}

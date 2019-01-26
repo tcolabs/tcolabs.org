@@ -1,0 +1,17 @@
+@media only screen and (max-width: $ipad-portrait){
+    .qodef-tabs .qodef-tabs-nav,
+    .qodef-tabs .qodef-tab-container{ 
+        width: 100%;   
+    }
+    
+    .qodef-tabs .qodef-tabs-nav li,
+    .qodef-tabs.qodef-horizontal .qodef-tabs-nav li{
+        float: none;  
+        display: block;
+    }
+    .qodef-tabs.qodef-horizontal .qodef-tabs-nav li,
+    .qodef-tabs.qodef-horizontal .qodef-tabs-nav li:first-child{
+        margin : 0 0 10px;
+    }
+    
+}

@@ -1,0 +1,178 @@
+.qodef-icon-shortcode {
+    $transition-duration: 0.15s;
+
+    display: inline-block;
+
+    &.circle,
+    &.square {
+        background-color: $first-main-color;
+        width: 2em;
+        height: 2em;
+        line-height: 2em;
+        text-align: center;
+
+        @include qodefTransition(
+                background-color $transition-duration ease-in-out,
+                border-color $transition-duration ease-in-out
+        );
+
+        a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .qodef-icon-element {
+            color: #fff;
+            line-height: inherit;
+        }
+    }
+
+    &.circle {
+        @include qodefBorderRadius(100%);
+    }
+	
+	&.square {
+        @include qodefBorderRadius(0);
+    }
+
+  	&.square:first-of-type {
+	  @include qodefBorderRadius(3px 0 0 3px);
+	}
+
+	&.square:last-of-type {
+	  @include qodefBorderRadius(0 3px 3px 0);
+	}
+	
+	&.circle.checked{
+		position:relative;
+	}
+	
+	&.circle.checked:before,
+	&.circle.checked:after{
+		display:block;
+		@include qodefBorderRadius(100%);
+		background-color: $first-main-color;
+		position:absolute;
+		color: #fff;
+	}
+	
+	
+	&.circle.checked:before{
+		width:44px;
+		height:44px;
+		bottom: 0px;
+		font-size:16px;
+		line-height:44px;
+		right: -12%;
+		z-index:9;
+		content: "\e080";
+		font-family: 'simple-line-icons';
+		webkit-transition: opacity 0.3s cubic-bezier(0.39, 0.58, 0.57, 1) 0.1s;
+		transition: opacity 0.3s cubic-bezier(0.39, 0.58, 0.57, 1) 0.1s;
+	}
+	
+	&.circle.checked:after{
+		bottom: 0px;
+		right: -12%;
+		z-index:8;
+		content:'';
+		width: 44px;
+		height: 44px;
+		-webkit-transition: -webkit-transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), right 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	
+	
+	&.circle.checked:hover:after{
+		-webkit-transform: scale(1.01);
+		-ms-transform: scale(1.01);
+		transform: scale(1.01);
+		width: 100%;
+		height: 100%;
+		right:0;
+	}
+	
+	&.circle.checked:hover:before{
+		opacity: 0;
+		-webkit-transition: opacity 0.2s cubic-bezier(0.39, 0.58, 0.57, 1) 0s;
+		transition: opacity 0.2s cubic-bezier(0.39, 0.58, 0.57, 1) 0s;
+	}
+	
+	&.circle.checked i.qodef-icon-element{
+		display:inline;
+	}
+	
+	&.circle.checked i.qodef-icon-element:after,
+	&.circle.checked span.qodef-icon-font-elegant.qodef-icon-element:after{
+		content: "\e080";
+		color: #fff;
+		font-family: 'simple-line-icons';
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity:0;
+		z-index:11;
+		-webkit-transition: opacity 0.1s ease-out 0s;
+		transition: opacity 0.1s ease-out 0s;
+	}
+	
+	&.circle.checked:hover i.qodef-icon-element:after,
+	&.circle.checked:hover span.qodef-icon-font-elegant.qodef-icon-element:after{
+		opacity:1;
+		-webkit-transition: opacity 0.2s ease-out 0.1s;
+		transition: opacity 0.2s ease-out 0.1s;
+	}
+	
+	
+	&.circle.checked.qodef-icon-huge:before{
+		right:-5%;
+	}
+	
+	&.circle.checked.qodef-icon-huge:after{
+		right:-5%;
+	}
+	
+	&.circle.checked.qodef-icon-huge:hover:after{
+		right:0;
+	}
+
+    .qodef-icon-element{
+        @include qodefTransition(color $transition-duration ease-in-out);
+    }
+}
+
+.qodef-icon-animation-holder {
+    @include qodefTransform(scale(0));
+    @include qodefTransition(transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.27)); 
+    display: inline-block;
+
+    &.qodef-icon-animation-show {
+        @include qodefTransform(scale(1));
+    }
+}
+
+.qodef-icon-tiny {
+    font-size: 1.33333333em;
+    line-height: .75em;
+    vertical-align: -15%;
+}
+
+.qodef-icon-small {
+    font-size: 2em;
+}
+
+.qodef-icon-medium {
+    font-size: 3em;
+}
+
+.qodef-icon-large {
+    font-size: 4em;;
+}
+
+.qodef-icon-huge {
+    font-size: 5em;
+}

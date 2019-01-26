@@ -1,0 +1,130 @@
+/* ==========================================================================
+# Process Style - begin
+========================================================================== */
+
+.qodef-process-holder {
+    text-align:center;
+
+    .qodef-process-item {
+        display: inline-block;
+        vertical-align: top;
+
+        .qodef-process-item-icon-holder-wrapper {
+            position: relative;
+        }
+
+        .qodef-process-item-icon-holder-wrapper:after {
+            content: "";
+            width: 20%;
+            position: absolute;
+            border-bottom: 2px dashed #dadada;
+            top: 50%;
+            left: 100%;
+            transform: translateX(-50%);
+        }
+
+        .qodef-process-item-icon-holder {
+            display: inline-block;
+            @include qodefBoxSizing(border-box);
+            width: 200px;
+            height: 200px;
+            border: 3px solid #e1e1e1;
+            position: relative;
+            @include qodefBorderRadius(50%);
+            @include qodefTransition(border 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94));
+        }
+
+        .qodef-process-item-background-holder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include qodefTransform(translateX(-50%) translateY(-50%));
+            line-height: 0;
+            border-radius: 50%;
+            border: 0 solid transparent;
+            box-sizing: border-box;
+            @include qodefTransition(border 0.3s  cubic-bezier(0.25, 0.46, 0.45, 0.94));
+        }
+
+        .qodef-icon-shortcode.circle {
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            background-color: #797979;
+            border: 0;
+        }
+
+        .qodef-icon-shortcode.circle .qodef-icon-element {
+            color: #fff;
+            font-size: 30px;
+        }
+
+        .qodef-process-item-content-holder {
+            margin-top: 35px;
+        }
+
+        .qodef-process-item-title-holder {
+            margin-bottom: 17px;
+        }
+
+        .qodef-process-item-title-holder > * {
+            @include qodefTransition(color 0.3s ease-out);
+        }
+
+        .qodef-process-item-text-holder {
+            padding: 0 10px 30px 10px;
+        }
+    }
+
+    .qodef-process-item:last-child {
+        .qodef-process-item-icon-holder-wrapper:after {
+            border: 0;
+        }
+    }
+
+    .qodef-process-item:hover {
+
+        .qodef-process-item-icon-holder {
+            border-color: $first-main-color;
+        }
+
+        .qodef-icon-shortcode.circle {
+            background-color: $first-main-color;
+        }
+
+        .qodef-process-item-background-holder {
+            border: 20px solid rgba(178,221,76,0.3);
+          @include qodefTransition(border 0.6s cubic-bezier(0.32, 1.63, 0.44, 1.82));
+        }
+
+        .qodef-process-item-title-holder > * {
+            color: $first-main-color;
+        }
+    }
+}
+
+.qodef-process-holder.columns-3 {
+    .qodef-process-item {
+        width: 33.33%;
+    }
+}
+
+.qodef-process-holder.columns-4 {
+    .qodef-process-item {
+        width: 25%;
+    }
+}
+
+.qodef-process-holder.columns-5 {
+    .qodef-process-item {
+        width: 20%;
+    }
+
+    .qodef-process-item-icon-holder-wrapper:after {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+# Process Style - end
+========================================================================== */

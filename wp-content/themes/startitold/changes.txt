@@ -1,0 +1,22 @@
+1.1
+- Added Woocommerce 2.4.12 compatibility
+- Updated Select Core plugin to version 1.1
+- Updated Visual Composer plugin to version 4.9.1
+- Fixed text background color for sticky menu
+- Fixed header top bar dependency of fealds in Select options
+- Added Font Awesome icon "Dashboard"
+- Fixed bug with sidebar on archive
+- Fixed bug with top bar visibility over slider
+- Fixed bug with anchors in mobile menu
+- Fixed css for Woocommerce account page
+- Fixed css for Woocommerce checkout page
+- Fixed portfolio list links on articles when Show More button is clicked
+- Fixed bug with links on images in Select Blog List shortcode boxed type
+- Fixed bug with theme installation on PHP versions 5.3 and 5.4
+- Fixed bug with Font options not working
+- Fixed bug with Sticky Sidebar
+- Fixed bug with counter when random type is selected
+- Fixed bug with product details button not translatable
+- Fixed bug with SEO meta fields.
+- Fixed spacing issue causing 404 error in WP admin
+- Fixed Google Map Warning for Sensor parameter no longer being required

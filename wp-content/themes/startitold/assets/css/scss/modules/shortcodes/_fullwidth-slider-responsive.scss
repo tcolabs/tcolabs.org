@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Fullwidth Slider shortcode responsive start styles
+   ========================================================================== */
+@include ipad-portrait{
+
+  .qodef-fullwidth-slider-item {
+
+	height: 450px;
+
+	.qodef-fullwidth-slider-item-image-holder-wrapper {
+	  display: none;
+	}
+
+	.qodef-fullwidth-slider-item-content-holder {
+	  background: rgba(33,33,33,0.8);
+	}
+
+	.qodef-fullwidth-slider-item-content-wrapper {
+
+	  .qodef-fullwidth-slider-item-wrapper-inner {
+		width: 100%;
+	  }
+
+	  .qodef-fullwidth-slider-item-wrapper-inner:after {
+		display: none;
+	  }
+
+	  .qodef-fullwidth-slider-item-elements-holder {
+		padding: 0;
+	  }
+
+	  .qodef-fullwidth-slider-item-title > * {
+		font-size: 22px;
+	  }
+
+	}
+
+  }
+
+}
+
+@include ipad-landscape{
+  .qodef-fullwidth-slider-item {
+
+	height: 600px;
+
+	.qodef-fullwidth-slider-item-image-holder-wrapper {
+	  display: none;
+	}
+  }
+}
+
+@include smaller-phone-portrait {
+
+  .qodef-fullwidth-slider-item {
+	.qodef-fullwidth-slider-item-content-wrapper {
+	  .qodef-fullwidth-slider-item-elements-holder {
+		padding: 0 35px;
+	  }
+	}
+  }
+}
+
+/* ==========================================================================
+   Fullwidth Slider shortcode responsive end styles
+   ========================================================================== */

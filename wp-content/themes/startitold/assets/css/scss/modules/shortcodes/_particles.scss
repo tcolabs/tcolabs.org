@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Particles shortcodes styles - Start
+   ========================================================================== */
+
+#qodef-particles {
+	background: #b61924;
+	position: relative;
+	overflow: hidden;
+	background: transparent center center no-repeat;
+	background-size: cover;
+	text-align: center;
+
+	#qodef-p-particles-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.qodef-p-content {
+		position: relative;
+		margin: 0 auto;
+	 	 width: $grid-width;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&.fullscreen .qodef-p-content,
+	&.fixed .qodef-p-content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate3d(-50%,-50%,0);
+		transform: translate3d(-50%,-50%,0);
+	} 
+}
+
+/* ==========================================================================
+   Particles shortcode styles - End
+   ========================================================================== */

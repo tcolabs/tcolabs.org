@@ -1,0 +1,163 @@
+@import 'small-images';
+@import 'small-slider';
+@import 'big-images';
+@import 'big-slider';
+@import 'gallery';
+
+.qodef-portfolio-single-holder {
+    .qodef-portfolio-info-item {
+        margin-bottom: 16px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+	
+	.qodef-portfolio-info-holder{
+		h6{
+			color: $first-main-color;
+			position:relative;
+			padding-left:20px;
+			margin-bottom:3px;
+		}
+		
+		h6:before{
+			position:absolute;
+			left:0;
+			top:0;
+			font-size:13px;
+			display:inline-block;
+			font-family: 'Simple-Line-Icons';
+			content:'';
+		}
+		
+		.qodef-portfolio-date h6:before{
+			content: "\e075";
+		}
+		
+		.qodef-portfolio-categories h6:before{
+			content: "\e055";
+		}
+		
+		.qodef-portfolio-custom-field h6:before{
+			content: "\e043";
+		}
+	}
+
+    .qodef-portfolio-single-nav {
+        $nav-height : 33px;
+        height: $nav-height;
+        line-height: $nav-height;
+        text-align: center;
+        position: relative;
+        margin-top: 40px;
+        margin-bottom: 40px;
+		padding:36px 0;
+		border-top: 1px solid #ececec;
+
+        span {
+            color: #b6b6b6;
+            line-height: $nav-height;
+            position:relative;
+            top:-1px;
+            font-size: 11px;
+
+            @include qodefTransition(color 0.15s ease-in-out);
+        }
+
+        .qodef-portfolio-back-btn {
+            display: inline-block;
+			
+			span{
+				font-family: 'Simple-Line-Icons';
+				font-size:20px;
+				color: #d1d1d1;
+				
+				&:hover{
+					color: $first-main-color;
+				}
+			}
+        }
+
+        .qodef-portfolio-prev span {
+            left:-1px;
+        }
+
+        .qodef-portfolio-next span {
+            right:-1px;
+        }
+
+
+        .qodef-portfolio-next,
+        .qodef-portfolio-prev,
+        .qodef-portfolio-back-btn {
+            height: $nav-height;
+        }
+
+        .qodef-portfolio-next,
+        .qodef-portfolio-prev {
+            position: absolute;
+            top: 36px;
+        }
+		
+		.qodef-portfolio-next a,
+        .qodef-portfolio-prev a{
+            height: $nav-height;
+			width: $nav-height;
+			display:block;
+			border:1px solid #b4b4b4;
+			@include qodefBoxSizing(border-box);
+			@include qodefBorderRadius(100%);
+			@include qodefTransition(border-color 0.15s ease-in-out);
+			
+			&:hover{
+				border-color: $first-main-color;
+			}
+			
+			&:hover span{
+				color: $first-main-color;
+			}
+        }
+
+        .qodef-portfolio-prev {
+            left: 0;
+        }
+
+        .qodef-portfolio-next {
+            right: 0;
+        }
+    }
+
+    .qodef-portfolio-video-lightbox {
+        position: relative;
+        display: block;
+
+        img {
+            vertical-align: middle;
+        }
+    }
+
+    .qodef-portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+
+        .qodef-portfolio-play-icon {
+            position: absolute;
+            font-size: 20px;
+            left: 50%;
+            top: 50%;
+
+            @include qodefTransform(translate(-50%, -50%));
+        }
+    }
+	
+	.qodef-comment-holder{
+		padding-top:0;
+	}
+	
+}

@@ -1,0 +1,137 @@
+/* ==========================================================================
+# Tabs style - begin
+========================================================================== */
+.qodef-tabs{
+    
+    .qodef-tabs-nav {                
+        display: block;
+        position: relative;
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        vertical-align: middle;
+        
+        li a{
+            display: block;
+            text-align: center;
+            padding: 12px 28px;
+            box-sizing: border-box;
+            color: #222222;
+			border-style: solid;
+			border-color: #e6e6e6;
+            border-top-width: 2px;
+			border-bottom-width: 2px;
+			border-left-width: 1px;
+			border-right-width: 1px;
+            font-size: 14px;
+			line-height:16px;
+            font-weight: 600;
+            @include qodefTransition(color 0.2s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out);
+        }
+        li.ui-state-active a,
+        li.ui-state-hover a{
+            color: #fff;
+            background-color: $first-main-color;
+			border-color: $first-main-color;
+        }
+        .qodef-tab-container{
+            box-sizing: border-box;            
+            position:relative;
+			
+        }
+		
+		li:first-child a{
+			border-left-width:2px;
+			border-radius: 3px 0 0 3px;
+		}
+		
+		li:last-child a{
+			border-right-width:2px;
+			border-radius: 0 3px 3px 0;
+		}
+    }
+	
+	.qodef-tab-container{
+        line-height:25px;
+    }
+    
+}
+/* Horizontal tabs styles
+   ========================================================================== */
+.qodef-tabs.qodef-horizontal{
+    
+    .qodef-tabs-nav li {
+        float: left;
+        margin: 0;
+        
+        &:first-child{
+            margin: 0;
+        }
+
+    }
+
+    .qodef-tab-container{
+        padding: 25px 0px;
+    }
+    
+}
+
+/* Vertical tabs styles
+   ========================================================================== */
+.qodef-tabs.qodef-vertical{
+    
+    .qodef-tabs-nav {
+        float: left;
+        
+        li{
+            margin: 0 0 10px 0;
+            display: block;
+            width: 100%;
+        }
+        &:last-child{
+            margin: 0;
+        } 
+		li a{
+			@include qodefBorderRadiusPredefined();
+			border-width:2px;
+		}	
+    }
+    .qodef-tab-container {
+        float: left;
+        padding: 0px 25px;
+		width:74%;
+    }
+    
+}
+
+/* Tabs with icon and text styles start
+   ========================================================================== */
+
+
+.qodef-tabs.qodef-tab-text-icon .qodef-tabs-nav li a{
+    
+    .qodef-tab-text-after-icon{
+        padding-left: 10px;
+        @include qodefTransition(initial);
+    }
+}
+
+/* Tabs with icon styles - start
+   ========================================================================== */
+
+.qodef-tabs.qodef-tab-icon .qodef-tabs-nav li a{
+    i,
+    span{
+        @include qodefTransition(initial);
+    }
+
+    .qodef-icon-frame {
+        display: inline-block;
+        min-width: 20px;
+    }
+    
+}
+/* ==========================================================================
+# Tabs style - end
+========================================================================== */

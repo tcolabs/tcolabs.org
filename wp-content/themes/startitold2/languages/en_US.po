@@ -1,0 +1,1004 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Startit v1.2.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2016-04-20 11:58:27+0000\n"
+"Last-Translator: admin <johndoegravatar@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:14
+#@ startit
+msgid "Page you are looking is not found"
+msgstr ""
+
+#: 404.php:22
+#@ startit
+msgid "The page you are looking for does not exist. It may have been moved, or removed altogether. Perhaps you can return back to the site's homepage and see if you can find what you are looking for."
+msgstr ""
+
+#: comments.php:4
+#@ startit
+msgid "No Comments"
+msgstr ""
+
+#: comments.php:4
+#@ startit
+msgid " Comment "
+msgstr ""
+
+#: comments.php:4
+#@ startit
+msgid " Comments "
+msgstr ""
+
+#: comments.php:9
+#@ startit
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: comments.php:32
+#@ startit
+msgid "Sorry, the comment form is closed at this time."
+msgstr ""
+
+#: comments.php:45
+#@ startit
+msgid "Post a Comment"
+msgstr ""
+
+#: comments.php:46
+#, php-format
+#@ startit
+msgid "Post a Reply to %s"
+msgstr ""
+
+#: comments.php:47
+#@ startit
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:48
+#@ startit
+msgid "Send message"
+msgstr ""
+
+#: comments.php:49
+#@ startit
+msgid "Comment"
+msgstr ""
+
+#: comments.php:49
+#@ startit
+msgid "Write your comment here..."
+msgstr ""
+
+#: comments.php:53
+#@ startit
+msgid "Name"
+msgstr ""
+
+#: comments.php:53
+#@ startit
+msgid "Your full name"
+msgstr ""
+
+#: comments.php:54
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:107
+#@ startit
+msgid "Email"
+msgstr ""
+
+#: comments.php:54
+#@ startit
+msgid "E-mail address"
+msgstr ""
+
+#: comments.php:55
+#@ startit
+msgid "Website"
+msgstr ""
+
+#: framework/admin/skins/select/templates/anchors-save.php:18
+#: framework/admin/skins/select/templates/header.php:10
+#@ startit
+msgid "Save Changes"
+msgstr ""
+
+#: framework/admin/skins/select/templates/content-import.php:99
+#@ startit
+msgid "The import process may take some time. Please be patient."
+msgstr ""
+
+#: framework/admin/skins/select/templates/content-import.php:118
+#@ startit
+msgid "Important notes:"
+msgstr ""
+
+#: framework/admin/skins/select/templates/content-import.php:120
+#@ startit
+msgid "Please note that import process will take time needed to download all attachments from demo web site."
+msgstr ""
+
+#: framework/admin/skins/select/templates/content-import.php:121
+#@ startit
+msgid "If you plan to use shop, please install WooCommerce before you run import."
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:406
+#@ startit
+msgid "Pingback:"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:418
+#@ startit
+msgid "Posted at "
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:418
+#@ startit
+msgid ", "
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:660
+#@ startit
+msgid "Continue reading"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:781
+#@ startit
+msgid "Read More"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:795
+#@ startit
+msgid "Facebook"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:796
+#@ startit
+msgid "Twitter"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:797
+#@ startit
+msgid "Instagram"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:798
+#@ startit
+msgid "Dribbble"
+msgstr ""
+
+#: framework/modules/blog/blog-functions.php:799
+#@ startit
+msgid "LinkedIn"
+msgstr ""
+
+#: framework/modules/blog/templates/lists/parts/filter.php:24
+#@ startit
+msgid "All"
+msgstr ""
+
+#: framework/modules/blog/templates/parts/audio.php:4
+#@ startit
+msgid "Your browser don't support audio player"
+msgstr ""
+
+#: framework/modules/blog/templates/parts/no-posts.php:2
+#: framework/modules/shortcodes/blog-list/templates/blog-list-holder.php:15
+#: search.php:35
+#@ startit
+msgid "No posts were found."
+msgstr ""
+
+#: framework/modules/blog/templates/parts/post-info-author.php:1
+#@ startit
+msgid "by"
+msgstr ""
+
+#: framework/modules/blog/templates/parts/post-info-category.php:1
+#@ startit
+msgid "in "
+msgstr ""
+
+#: framework/modules/blog/templates/parts/post-info-comments.php:1
+#@ startit
+msgid "Comments"
+msgstr ""
+
+#: framework/modules/blog/templates/single/parts/tags.php:2
+#@ startit
+msgid "Tags:"
+msgstr ""
+
+#: framework/modules/fullscreenmenu/fullscreen-menu-functions.php:7
+#@ startit
+msgid "Fullscreen Navigation"
+msgstr ""
+
+#: framework/modules/header/functions.php:10
+#@ startit
+msgid "Main Navigation"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:13
+#@ startit
+msgid "Top Bar Left"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:22
+#@ startit
+msgid "Top Bar Center"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:30
+#@ startit
+msgid "Top Bar Right"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:48
+#@ startit
+msgid "Right From Main Menu"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:52
+#@ startit
+msgid "Widgets added here will appear on the right hand side from the main menu"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:67
+#@ startit
+msgid "Vertical Area"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:71
+#@ startit
+msgid "Widgets added here will appear on the bottom of vertical menu"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:87
+#@ startit
+msgid "Right From Mobile Logo"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:91
+#@ startit
+msgid "Widgets added here will appear on the right hand side from the mobile logo"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:106
+#@ startit
+msgid "Sticky Right"
+msgstr ""
+
+#: framework/modules/header/widget-areas-functions.php:110
+#@ startit
+msgid "Widgets added here will appear on the right hand side in sticky menu"
+msgstr ""
+
+#: framework/modules/like/like.php:129
+#: framework/modules/like/like.php:141
+#: framework/modules/like/like.php:153
+#@ startit
+msgid "Like this"
+msgstr ""
+
+#: framework/modules/like/like.php:132
+#: framework/modules/like/like.php:144
+#: framework/modules/like/like.php:156
+#@ startit
+msgid "You already like this!"
+msgstr ""
+
+#: framework/modules/portfolio/templates/single/parts/categories.php:14
+#@ startit
+msgid "Category"
+msgstr ""
+
+#: framework/modules/portfolio/templates/single/parts/date.php:4
+#@ startit
+msgid "Date"
+msgstr ""
+
+#: framework/modules/portfolio/templates/single/parts/social.php:3
+#: framework/modules/shortcodes/socialshare/templates/dropdown.php:4
+#@ startit
+msgid "Share"
+msgstr ""
+
+#: framework/modules/portfolio/templates/single/parts/tags.php:12
+#@ startit
+msgid "Tags"
+msgstr ""
+
+#: framework/modules/search/templates/types/fullscreen-search.php:14
+#@ startit
+msgid "Search:"
+msgstr ""
+
+#: framework/modules/search/templates/types/search-covers-header.php:9
+#: framework/modules/search/templates/types/search-slides-from-header-bottom.php:8
+#: framework/modules/search/templates/types/search-slides-from-window-top.php:9
+#: framework/modules/title/title-functions.php:123
+#: framework/modules/widgets/search-opener/search-opener.php:115
+#: searchform.php:3
+#@ startit
+msgid "Search"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:25
+#@ startit
+msgid "Select Accordion Tab"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:37
+#@ startit
+msgid "Title"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:40
+#@ startit
+msgid "Section"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:41
+#@ startit
+msgid "Enter accordion section title."
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:45
+#@ startit
+msgid "Section ID"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:47
+#, php-format
+#@ startit
+msgid "Enter optional row ID. Make sure it is unique, and it is valid as w3c specification: %s (Must not have spaces)"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion-tab.php:47
+#@ startit
+msgid "link"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion.php:26
+#@ startit
+msgid "Select Accordion"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion.php:37
+#@ startit
+msgid "Extra class name"
+msgstr ""
+
+#: framework/modules/shortcodes/accordions/accordion.php:39
+#@ startit
+msgid "Style particular content element differently - add a class name and refer to it in custom CSS."
+msgstr ""
+
+#: framework/modules/shortcodes/blog-list/blog-list.php:37
+#: includes/nav-menu/edit_custom_walker.php:206
+#@ startit
+msgid "Type"
+msgstr ""
+
+#: framework/modules/shortcodes/button/button.php:196
+#@ startit
+msgid "Insert margin in format: 0px 0px 1px 0px"
+msgstr ""
+
+#: framework/modules/shortcodes/fullwidth-slider/fullwidth-slider-holder.php:34
+#@ startit
+msgid "Speed of slide animation in miliseconds"
+msgstr ""
+
+#: framework/modules/shortcodes/icon/icon.php:82
+#@ startit
+msgid "Please insert border radius(Rounded corners) in px. For example: 4 "
+msgstr ""
+
+#: framework/modules/title/title-functions.php:105
+#@ startit
+msgid "Author:"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:134
+#@ startit
+msgid "404 - Page not found"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:163
+#@ startit
+msgid "Archive"
+msgstr ""
+
+#: framework/modules/title/title-functions.php:334
+#@ startit
+msgid "Page"
+msgstr ""
+
+#: framework/modules/widgets/latest-post/latest-posts.php:9
+#@ startit
+msgid "Display posts from your blog"
+msgstr ""
+
+#: framework/modules/widgets/lib/widget-class.php:75
+#@ startit
+msgid "There are no options for this widget."
+msgstr ""
+
+#: framework/modules/widgets/sticky-sidebar/sticky-sidebar.php:8
+#@ startit
+msgid "Use this widget to make the sidebar sticky. Drag it into the sidebar above the widget which you want to be the first element in the sticky sidebar."
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:7
+#@ startit
+msgid "Select  Woocommerce Dropdown Cart"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:73
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:181
+#@ startit
+msgid "Quantity: "
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:77
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:185
+#: woocommerce/cart/cart.php:50
+#@ startit
+msgid "Remove this item"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:87
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:194
+#: woocommerce/cart/cart-totals.php:81
+#: woocommerce/cart/cart.php:30
+#@ startit
+msgid "Total"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:98
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:206
+#@ startit
+msgid "View Cart"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:99
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:209
+#@ startit
+msgid "Checkout"
+msgstr ""
+
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:104
+#: framework/modules/woocommerce/widgets/woocommerce-dropdown-cart.php:215
+#@ startit
+msgid "No products in the cart."
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:88
+#@ startit
+msgid "Sale!"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:103
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:115
+#@ startit
+msgid "First name"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:104
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:116
+#@ startit
+msgid "Last name"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:105
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:117
+#@ startit
+msgid "Company name"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:106
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:118
+#@ startit
+msgid "Address"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:108
+#@ startit
+msgid "Phone"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:109
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:119
+#@ startit
+msgid "Postcode / ZIP"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:110
+#@ startit
+msgid "State / County"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:190
+#@ startit
+msgid "Out of stock"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:261
+#@ startit
+msgid "Details"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:314
+#@ startit
+msgid "Apply Coupon"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:333
+#@ startit
+msgid "Update Cart"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:352
+#@ startit
+msgid "Proceed to Checkout"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:370
+#@ startit
+msgid "Update Totals"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:390
+#@ startit
+msgid "Pay for order"
+msgstr ""
+
+#: framework/modules/woocommerce/woocommerce-template-hooks.php:415
+#@ startit
+msgid "Place Order"
+msgstr ""
+
+#: framework/qode-framework.php:563
+#@ startit
+msgid "Dismiss this notice"
+msgstr ""
+
+#: functions.php:718
+#@ startit
+msgid "No more posts"
+msgstr ""
+
+#: functions.php:719
+#@ startit
+msgid "Loading new posts..."
+msgstr ""
+
+#. translators: %s: title of menu item which is invalid
+#: includes/nav-menu/edit_custom_walker.php:78
+#, php-format
+#@ startit
+msgid "%s (Invalid)"
+msgstr ""
+
+#. translators: %s: title of menu item in draft status
+#: includes/nav-menu/edit_custom_walker.php:82
+#, php-format
+#@ startit
+msgid "%s (Pending)"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:107
+#@ startit
+msgid "Move up"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:120
+#@ startit
+msgid "Move down"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:122
+#: includes/nav-menu/edit_custom_walker.php:124
+#@ startit
+msgid "Edit Menu Item"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:133
+#@ startit
+msgid "URL"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:140
+#@ startit
+msgid "Navigation Label"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:146
+#@ startit
+msgid "Title Attribute"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:153
+#@ startit
+msgid "Open link in a new window/tab"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:158
+#@ startit
+msgid "CSS Classes (optional)"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:164
+#@ startit
+msgid "Link Relationship (XFN)"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:170
+#@ startit
+msgid "Description"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:172
+#@ startit
+msgid "The description will be displayed in the menu if the current theme supports it."
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:180
+#@ startit
+msgid "Anchor"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:191
+#@ startit
+msgid "Don't link"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:201
+#@ startit
+msgid "Don't show"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:216
+#@ startit
+msgid "Wide menu position"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:234
+#@ startit
+msgid "Icon Pack"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:240
+#@ startit
+msgid "Only with \"default\" & \"wide with icons\" menu types"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:251
+#@ startit
+msgid "Icon"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:272
+#@ startit
+msgid "Dropdown Featured Icon"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:281
+#@ startit
+msgid "Custom widget area"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:292
+#@ startit
+msgid "Only with \"wide & wide with icons\" menu type"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:301
+#, php-format
+#@ startit
+msgid "Original: %s"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:314
+#@ startit
+msgid "Remove"
+msgstr ""
+
+#: includes/nav-menu/edit_custom_walker.php:315
+#@ startit
+msgid "Cancel"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:61
+#@ startit
+msgid "Install Required Plugins"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:62
+#@ startit
+msgid "Install Plugins"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:63
+#, php-format
+#@ startit
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:64
+#@ startit
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:65
+#, php-format
+#@ startit
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:66
+#, php-format
+#@ startit
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:67
+#, php-format
+#@ startit
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:68
+#, php-format
+#@ startit
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:69
+#, php-format
+#@ startit
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:70
+#, php-format
+#@ startit
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:71
+#, php-format
+#@ startit
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:72
+#, php-format
+#@ startit
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:73
+#@ startit
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:74
+#@ startit
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/plugins/plugins-activation.php:75
+#@ startit
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:76
+#@ startit
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: includes/plugins/plugins-activation.php:77
+#, php-format
+#@ startit
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: includes/sidebar/qode-custom-sidebar.php:18
+#@ startit
+msgid "Custom Widget Area"
+msgstr ""
+
+#: includes/sidebar/qode-custom-sidebar.php:42
+#@ startit
+msgid "Enter Name of the new Widget Area"
+msgstr ""
+
+#: includes/sidebar/qode-custom-sidebar.php:43
+#@ startit
+msgid "Add Widget Area"
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:49
+#@ startit
+msgid "Shipping costs will be calculated once you have provided your address."
+msgstr ""
+
+#: woocommerce/cart/cart-shipping.php:51
+#@ startit
+msgid "There are no shipping methods available. Please double check your address, or contact us if you need any help."
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:22
+#@ startit
+msgid "Cart Totals"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:27
+#@ startit
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:49
+#@ startit
+msgid "Shipping"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:93
+#, php-format
+#@ startit
+msgid " (taxes estimated for %s)"
+msgstr ""
+
+#: woocommerce/cart/cart-totals.php:96
+#, php-format
+#@ startit
+msgid "Note: Shipping and taxes are estimated%s and will be updated during checkout based on your billing and shipping information."
+msgstr ""
+
+#: woocommerce/cart/cart.php:27
+#@ startit
+msgid "Product"
+msgstr ""
+
+#: woocommerce/cart/cart.php:28
+#@ startit
+msgid "Price"
+msgstr ""
+
+#: woocommerce/cart/cart.php:29
+#@ startit
+msgid "Quantity"
+msgstr ""
+
+#: woocommerce/cart/cart.php:82
+#@ startit
+msgid "Available on backorder"
+msgstr ""
+
+#: woocommerce/cart/cart.php:128
+#@ startit
+msgid "Coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:129
+#@ startit
+msgid "Coupon code"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:24
+#@ startit
+msgid "Calculate Shipping"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:30
+#@ startit
+msgid "Select a country&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:47
+#: woocommerce/cart/shipping-calculator.php:53
+#: woocommerce/cart/shipping-calculator.php:65
+#@ startit
+msgid "State / county"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:54
+#@ startit
+msgid "Select a state&hellip;"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:74
+#@ startit
+msgid "City"
+msgstr ""
+
+#: woocommerce/cart/shipping-calculator.php:82
+#@ startit
+msgid "Postcode / Zip"
+msgstr ""
+
+#: woocommerce/global/form-login.php:26
+#@ startit
+msgid "Username or email"
+msgstr ""
+
+#: woocommerce/global/form-login.php:29
+#@ startit
+msgid "Password"
+msgstr ""
+
+#: woocommerce/global/form-login.php:37
+#@ startit
+msgid "Login"
+msgstr ""
+
+#: woocommerce/global/form-login.php:38
+#@ startit
+msgid "Lost your password?"
+msgstr ""
+
+#: woocommerce/global/form-login.php:41
+#@ startit
+msgid "Remember me"
+msgstr ""
+
+#: woocommerce/global/quantity-input.php:25
+#@ startit
+msgctxt "Product quantity input tooltip"
+msgid "Qty"
+msgstr ""
+
+#: woocommerce/single-product/product-image.php:43
+#@ startit
+msgid "Placeholder"
+msgstr ""
+
+#: woocommerce/single-product/related.php:42
+#@ startit
+msgid "Related Products"
+msgstr ""
+
+#: woocommerce/single-product/share.php:18
+#@ startit
+msgid "Share: "
+msgstr ""
+

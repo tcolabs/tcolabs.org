@@ -1,0 +1,17 @@
+/* ==========================================================================
+# Team responsive style - begin
+========================================================================== */
+
+/* ==========================================================================
+# Team responsive style - end
+========================================================================== */
+
+@media only screen and (min-width: $phone-portrait) and (max-width: $laptop-landscape) {
+
+	.qodef-team.main-info-below-image .qodef-circle-animate,
+	.qodef-team.main-info-below-image .qodef-team-position-icon{
+		top: 8%;
+		right: 8%;
+	}
+
+}

@@ -1,0 +1,27 @@
+/* ==========================================================================
+# Image With Icon Responsive Style - begin
+========================================================================== */
+
+@media screen and (min-width:$ipad-portrait) and (max-width:$ipad-landscape) {
+    .qodef-image-with-icon-holder {
+
+        .qodef-image-with-icon-holder-icon-wrapper {
+
+            .qodef-icon-shortcode {
+
+                width: 52px;
+                height: 52px;
+                line-height: 52px;
+
+                .qodef-icon-element {
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+}
+
+
+/* ==========================================================================
+# Image With Icon Responsive Style - end
+========================================================================== */

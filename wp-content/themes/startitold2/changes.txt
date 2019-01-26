@@ -1,0 +1,59 @@
+1.4.1
+- Fixed WooCommerce 2.6.1 out of dated file
+- Fixed facebook and twitter social share on mobiles
+
+1.4
+- Added WooCommerce 2.6 compatibility
+- Updated Visual Composer to 4.12
+- Updated Layer Slider to 5.6.8
+- Updated pot file for translation
+
+1.3.1
+- Updated Visual Composer to 4.11.2.1
+- Updated Layer Slider to 5.6.6
+
+1.3
+- Added  Wordpress 4.5 compatibility
+- Updated Visual Composer to 4.11.1
+- Fixed bug with product review stars loosing color on focus lost
+- Fixed woocommerce account pages css
+- Fixed woocommerce single product css
+- Fixed bug with woocommerce category and tag pages not using default shop page sidebar
+- Fixed bug with dynamic css
+- Fixed bug with vertical menu responsive
+- Fixed bug with "Use Link as Anchor" in icon shortcode
+- Fixed bug with dropdown for selecting variations on variable product page
+- Fixed creating 'phantom' tab in Tabs shortcode
+
+1.2
+- Added Woocommerce 2.5.2 compatibility
+- Updated Visual Composer plugin to version 4.9.2
+- Fixed bug with page transitions
+- Fixed bug fith elements holder
+- Fixed bug with boxed layout responsivness
+- Fixed bug with anchors and smooth page transitions
+- Fixed bug with slider position when side area is opened
+- Fixed bug with carousel image change on hover
+
+1.1
+- Added Woocommerce 2.4.12 compatibility
+- Updated Select Core plugin to version 1.1
+- Updated Visual Composer plugin to version 4.9.1
+- Fixed text background color for sticky menu
+- Fixed header top bar dependency of fealds in Select options
+- Added Font Awesome icon "Dashboard"
+- Fixed bug with sidebar on archive
+- Fixed bug with top bar visibility over slider
+- Fixed bug with anchors in mobile menu
+- Fixed css for Woocommerce account page
+- Fixed css for Woocommerce checkout page
+- Fixed portfolio list links on articles when Show More button is clicked
+- Fixed bug with links on images in Select Blog List shortcode boxed type
+- Fixed bug with theme installation on PHP versions 5.3 and 5.4
+- Fixed bug with Font options not working
+- Fixed bug with Sticky Sidebar
+- Fixed bug with counter when random type is selected
+- Fixed bug with product details button not translatable
+- Fixed bug with SEO meta fields.
+- Fixed spacing issue causing 404 error in WP admin
+- Fixed Google Map Warning for Sensor parameter no longer being required

@@ -1,0 +1,2 @@
+[25-Mar-2017 19:52:12 CST6CDT] PHP Fatal error:  Call to undefined function _deprecated_file() in /home/tcolabs8/public_html/wp-includes/registration-functions.php on line 7
+[19-Nov-2018 14:48:57 CST6CDT] PHP Fatal error:  Call to undefined function is_robots() in /home/tcolabs8/public_html/wp-includes/template-loader.php on line 28

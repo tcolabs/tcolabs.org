@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAAA,0HAA2H;EACzH,OAAO,EAAE,IAAI;;;;AAGf,wEAAyE;EACvE,UAAU,EAAE,qBAAqB",
+"sources": ["scss/ie9_stylesheet.scss"],
+"names": [],
+"file": "ie9_stylesheet.css"
+}

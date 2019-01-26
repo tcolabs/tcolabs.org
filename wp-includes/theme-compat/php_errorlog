@@ -1,0 +1,1 @@
+[07-Jun-2018 08:24:56 CST6CDT] PHP Fatal error:  Call to undefined function post_class() in /home/tcolabs8/public_html/wp-includes/theme-compat/embed-content.php on line 13

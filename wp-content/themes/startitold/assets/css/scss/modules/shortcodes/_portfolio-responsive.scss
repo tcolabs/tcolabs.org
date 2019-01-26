@@ -1,0 +1,44 @@
+@media only screen and (max-width: $ipad-landscape){
+    .qodef-portfolio-list-holder-outer.qodef-ptf-four-columns article,
+    .qodef-portfolio-list-holder-outer.qodef-ptf-five-columns article,
+    .qodef-portfolio-list-holder-outer.qodef-ptf-six-columns article,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-four-columns .qodef-filler,
+    .qodef-portfolio-list-holder-outer.qodef-ptf-five-columns .qodef-filler,
+    .qodef-portfolio-list-holder-outer.qodef-ptf-six-columns .qodef-filler{
+        width: 33.33%;
+    }  
+	
+	.qodef-portfolio-list-holder-outer.qodef-ptf-gallery-space.qodef-ptf-four-columns article,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-gallery-space.qodef-ptf-five-columns article,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-gallery-space.qodef-ptf-six-columns article,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-standard.qodef-ptf-four-columns article,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-standard.qodef-ptf-five-columns article,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-standard.qodef-ptf-six-columns article,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-gallery-space.qodef-ptf-four-columns .qodef-filler,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-gallery-space.qodef-ptf-five-columns .qodef-filler,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-gallery-space.qodef-ptf-six-columns .qodef-filler,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-standard.qodef-ptf-four-columns .qodef-filler,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-standard.qodef-ptf-five-columns .qodef-filler,
+	.qodef-portfolio-list-holder-outer.qodef-ptf-standard.qodef-ptf-six-columns .qodef-filler{
+		width:32%;
+	}
+   
+}
+
+@media only screen and (max-width: $phone-landscape){
+    .qodef-portfolio-list-holder-outer article,
+    .qodef-portfolio-list-holder-outer.qodef-ptf-gallery-space article{
+        width: 100% !important; // !important is set to override all other stronger selectors
+		margin-bottom: 30px;
+    } 
+    .qodef-portfolio-filter-holder{
+        .qodef-portfolio-filter-holder-inner ul li{
+            float:none;
+            text-align: left;
+            span{
+                padding-left: 0;
+            }
+        }   
+        
+    }
+}

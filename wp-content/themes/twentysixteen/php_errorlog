@@ -1,0 +1,5 @@
+[10-Jan-2018 23:43:47 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/twentysixteen/404.php on line 10
+[14-Feb-2018 05:42:00 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/tcolabs8/public_html/wp-content/themes/twentysixteen/header.php on line 13
+[14-Feb-2018 05:42:02 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/tcolabs8/public_html/wp-content/themes/twentysixteen/header.php on line 13
+[06-Jun-2018 08:02:16 CST6CDT] PHP Fatal error:  Call to undefined function language_attributes() in /home/tcolabs8/public_html/wp-content/themes/twentysixteen/header.php on line 13
+[06-Jan-2019 11:12:18 CST6CDT] PHP Fatal error:  Call to undefined function get_header() in /home/tcolabs8/public_html/wp-content/themes/twentysixteen/404.php on line 10

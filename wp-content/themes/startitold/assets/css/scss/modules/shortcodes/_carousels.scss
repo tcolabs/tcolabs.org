@@ -1,0 +1,140 @@
+/* ==========================================================================
+# Carousels style - begin
+========================================================================== */
+
+.qodef-carousel-holder {
+
+	padding: 19px 0;
+	background-color: transparent;
+
+  	&.with_navigation {
+	  padding: 48px 106px;
+	}
+
+	.qodef-carousel-item-holder {
+		position: relative;
+	  	padding: 0 13px;
+
+		/* Image zoom - begin
+		========================================================================== */
+
+		.qodef-carousel-first-image-holder.qodef-image-zoom img {
+			@include qodefTransition(transform 0.15s ease-out);
+			-webkit-backface-visibility: hidden;
+		}
+
+		.qodef-carousel-first-image-holder.qodef-image-zoom:hover img {
+			@include qodefTransform(scale(1.1));
+		}
+
+		/* Image zoom - end
+		========================================================================== */
+
+
+		/* Image change on hover - begin
+		========================================================================== */
+
+		.qodef-carousel-first-image-holder.qodef-image-change {
+			position: relative;
+			opacity: 1;
+			z-index: 5;
+			@include qodefTransition(opacity 0.15s ease-out);
+			display: inline-block;
+			width: 100%;
+		}
+
+		.qodef-carousel-second-image-holder {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&:hover .qodef-carousel-first-image-holder.qodef-image-change {
+			opacity: 0;
+			display: inline-block;
+			width: 100%;
+		}
+
+		/* Image change on hover - end
+		========================================================================== */
+
+	}
+
+	/* Carousel navigation - begin
+	========================================================================== */
+
+	.qodef-carousel.owl-carousel {
+
+		.owl-buttons {
+
+			width: 100%;
+
+			.owl-prev {
+				position: absolute;
+				top: 50%;
+				@include qodefTransform(translateY(-50%));
+				left: -106px;
+			}
+
+			.owl-next {
+				position: absolute;
+				top: 50%;
+				@include qodefTransform(translateY(-50%));
+				right: -106px;
+			}
+
+			.qodef-prev-icon,
+			.qodef-next-icon {
+			  display: inline-block;
+			  width: 66px;
+			  height: 66px;
+			  @include qodefBorderRadiusPredefined();
+			  background-color: #aaa;
+			  text-align: center;
+
+			  i {
+				font-size: 20px;
+				line-height: 66px;
+				color: #fff;
+			  }
+
+			}
+
+		}
+
+		.owl-pagination {
+			text-align: center;
+
+			.owl-page {
+				display: inline-block;
+			}
+
+			.owl-page span {
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				margin: 3px;
+				filter: Alpha(Opacity=50);
+				opacity: 0.5;
+				-webkit-border-radius: 20px;
+				-moz-border-radius: 20px;
+				border-radius: 20px;
+				background: #74797b;
+			}
+
+			.owl-page.active span {
+				opacity: 1;
+			}
+
+		}
+
+	}
+
+	/* Carousel navigation - end
+	========================================================================== */
+
+}
+
+/* ==========================================================================
+# Carousels style - end
+========================================================================== */

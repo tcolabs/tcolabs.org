@@ -1,0 +1,56 @@
+/* ==========================================================================
+# Image With Icon Style - begin
+========================================================================== */
+
+.qodef-image-with-icon-holder {
+
+    .qodef-image-with-icon-holder-inner {
+        display: inline-block;
+        width: 100%;
+        position: relative;
+        line-height: 0;
+    }
+
+    .qodef-image-with-icon-holder-icon-wrapper {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+
+        .qodef-icon-shortcode {
+
+            background-color: $first-main-color;
+            width: 82px;
+            height: 82px;
+            line-height: 82px;
+
+
+            .qodef-icon-element {
+                color: #fff;
+                font-size: 28px;
+            }
+        }
+    }
+
+    .qodef-image-with-icon-holder-image-wrapper {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .qodef-image-holder {
+        display: inline-block;
+        width: 100%;
+        vertical-align: middle;
+
+        img {
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            display:inline-block;
+            vertical-align: middle;
+        }
+    }
+}
+
+/* ==========================================================================
+# Image With Icon Style - end
+========================================================================== */

@@ -1,0 +1,59 @@
+/* ==========================================================================
+# Pie Chart Basic - begin
+========================================================================== */
+
+.qodef-pie-chart-holder {
+	position: relative;
+	display: block;
+
+	.qodef-percentage {
+		position: relative;
+		display: block;
+		height: 145px;
+		width: 145px;
+		line-height: 145px;
+		text-align: center;
+		margin: 0 auto;
+		opacity: 0;
+		filter: alpha(opacity=0);
+		@include qodefTransition(opacity .3s ease-out);
+
+		.qodef-pie-title {
+			line-height: inherit;
+		}
+
+	}
+
+	.qodef-percentage canvas {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.qodef-to-counter {
+		position: relative;
+		font-weight: 600;
+		font-size: 34px;
+		color: #222222;
+	}
+
+  	.qodef-to-counter:after {
+	  content: '%';
+	  line-height: 34px;
+	}
+
+	.qodef-pie-chart-text {
+		text-align: center;
+		margin: 12px 0 0;
+
+		.qodef-pie-title {
+			margin: 0 0 12px;
+		}
+
+	}
+
+}
+
+/* ==========================================================================
+# Pie Chart Basic - end
+========================================================================== */
