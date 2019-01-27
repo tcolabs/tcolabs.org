@@ -67,6 +67,15 @@
   z-index: 20;
 }
 
+.final-tiles-gallery .woo {
+  display: block;
+  text-align: center;
+  margin-top:10px;
+}
+.final-tiles-gallery .woo:hover {
+  text-decoration: underline;
+}
+
 .final-tiles-gallery .ftg-social a {
   color: #fff;
   text-decoration: none;

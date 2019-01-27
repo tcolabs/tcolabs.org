@@ -45,8 +45,9 @@ class Jetpack_Photon {
 	 * @return null
 	 */
 	private function setup() {
-		if ( ! function_exists( 'jetpack_photon_url' ) )
+		if ( ! function_exists( 'jetpack_photon_url' ) ) {
 			return;
+		}
 
 		// Images in post content and galleries
 		add_filter( 'the_content', array( __CLASS__, 'filter_the_content' ), 999999 );
@@ -55,6 +56,8 @@ class Jetpack_Photon {
 
 		// Core image retrieval
 		add_filter( 'image_downsize', array( $this, 'filter_image_downsize' ), 10, 3 );
+		add_filter( 'rest_request_before_callbacks', array( $this, 'should_rest_photon_image_downsize' ), 10, 3 );
+		add_filter( 'rest_request_after_callbacks', array( $this, 'cleanup_rest_photon_image_downsize' ) );
 
 		// Responsive image srcset substitution
 		add_filter( 'wp_calculate_image_srcset', array( $this, 'filter_srcset_array' ), 10, 5 );
@@ -344,8 +347,36 @@ class Jetpack_Photon {
 							unset( $placeholder_src );
 						}
 
-						// Remove the width and height arguments from the tag to prevent distortion
-						$new_tag = preg_replace( '#(?<=\s)(width|height)=["|\']?[\d%]+["|\']?\s?#i', '', $new_tag );
+						// If we are not transforming the image with resize, fit, or letterbox (lb), then we should remove
+						// the width and height arguments from the image to prevent distortion. Even if $args['w'] and $args['h']
+						// are present, Photon does not crop to those dimensions. Instead, it appears to favor height.
+						//
+						// If we are transforming the image via one of those methods, let's update the width and height attributes.
+						if ( empty( $args['resize'] ) && empty( $args['fit'] ) && empty( $args['lb'] ) ) {
+							$new_tag = preg_replace( '#(?<=\s)(width|height)=["|\']?[\d%]+["|\']?\s?#i', '', $new_tag );
+						} else {
+							$resize_args = isset( $args['resize'] ) ? $args['resize'] : false;
+							if ( false == $resize_args ) {
+								$resize_args = ( ! $resize_args && isset( $args['fit'] ) )
+									? $args['fit']
+									: false;
+							}
+							if ( false == $resize_args ) {
+								$resize_args = ( ! $resize_args && isset( $args['lb'] ) )
+									? $args['lb']
+									: false;
+							}
+
+							$resize_args = array_map( 'trim', explode( ',', $resize_args ) );
+
+							// (?<=\s)         - Ensure width or height attribute is preceded by a space
+							// (width=["|\']?) - Matches, and captures, width=, width=", or width='
+							// [\d%]+          - Matches 1 or more digits
+							// (["|\']?)       - Matches, and captures, ", ', or empty string
+							// \s              - Ensures there's a space after the attribute
+							$new_tag = preg_replace( '#(?<=\s)(width=["|\']?)[\d%]+(["|\']?)\s?#i', sprintf( '${1}%d${2} ', $resize_args[0] ), $new_tag );
+							$new_tag = preg_replace( '#(?<=\s)(height=["|\']?)[\d%]+(["|\']?)\s?#i', sprintf( '${1}%d${2} ', $resize_args[1] ), $new_tag );
+						}
 
 						// Tag an image for dimension checking
 						$new_tag = preg_replace( '#(\s?/)?>(\s*</a>)?$#i', ' data-recalc-dims="1"\1>\2', $new_tag );
@@ -437,7 +468,7 @@ class Jetpack_Photon {
 			 *
 			 * 	 @type $image Image URL.
 			 * 	 @type $attachment_id Attachment ID of the image.
-			 * 	 @type $size Image size. Can be a string (name of the image size, e.g. full) or an integer.
+			 * 	 @type $size Image size. Can be a string (name of the image size, e.g. full) or an array of width and height.
 			 * }
 			 */
 			false === apply_filters( 'jetpack_photon_admin_allow_image_downsize', false, compact( 'image', 'attachment_id', 'size' ) )
@@ -458,7 +489,7 @@ class Jetpack_Photon {
 		 *
 		 * 	 @type $image Image URL.
 		 * 	 @type $attachment_id Attachment ID of the image.
-		 * 	 @type $size Image size. Can be a string (name of the image size, e.g. full) or an integer.
+		 * 	 @type $size Image size. Can be a string (name of the image size, e.g. full) or an array of width and height.
 		 * }
 		 */
 		if ( apply_filters( 'jetpack_photon_override_image_downsize', false, compact( 'image', 'attachment_id', 'size' ) ) ) {
@@ -478,7 +509,9 @@ class Jetpack_Photon {
 
 			$intermediate = true; // For the fourth array item returned by the image_downsize filter.
 
-			// If an image is requested with a size known to WordPress, use that size's settings with Photon
+			// If an image is requested with a size known to WordPress, use that size's settings with Photon.
+			// WP states that `add_image_size()` should use a string for the name, but doesn't enforce that.
+			// Due to differences in how Core and Photon check for the registered image size, we check both types.
 			if ( ( is_string( $size ) || is_int( $size ) ) && array_key_exists( $size, self::image_sizes() ) ) {
 				$image_args = self::image_sizes();
 				$image_args = $image_args[ $size ];
@@ -761,7 +794,7 @@ class Jetpack_Photon {
 			} // foreach ( $multipliers as $multiplier )
 			if ( is_array( $newsources ) ) {
 				if ( function_exists( 'array_replace' ) ) { // PHP 5.3+, preferred
-					$sources = array_replace( $sources, $newsources );
+					$sources = array_replace( $sources, $newsources ); // phpcs:ignore PHPCompatibility.PHP.NewFunctions.array_replaceFound
 				} else { // For PHP 5.2 using WP shim function
 					$sources = array_replace_recursive( $sources, $newsources );
 				}
@@ -984,6 +1017,87 @@ class Jetpack_Photon {
 	 * @return null
 	 */
 	public function action_wp_enqueue_scripts() {
-		wp_enqueue_script( 'jetpack-photon', plugins_url( 'modules/photon/photon.js', JETPACK__PLUGIN_FILE ), array( 'jquery' ), 20130122, true );
+		if ( Jetpack_AMP_Support::is_amp_request() ) {
+			return;
+		}
+		wp_enqueue_script(
+			'jetpack-photon',
+			Jetpack::get_file_url_for_environment(
+				'_inc/build/photon/photon.min.js',
+				'modules/photon/photon.js'
+			),
+			array( 'jquery' ),
+			20130122,
+			true
+		);
+	}
+
+	/**
+	 * Determine if image_downsize should utilize Photon via REST API.
+	 *
+	 * The WordPress Block Editor (Gutenberg) and other REST API consumers using the wp/v2/media endpoint, especially in the "edit"
+	 * context is more akin to the is_admin usage of Photon (see filter_image_downsize). Since consumers are trying to edit content in posts,
+	 * Photon should not fire as it will fire later on display. By aborting an attempt to Photonize an image here, we
+	 * prevents issues like https://github.com/Automattic/jetpack/issues/10580 .
+	 *
+	 * To determine if we're using the wp/v2/media endpoint, we hook onto the `rest_request_before_callbacks` filter and
+	 * if determined we are using it in the edit context, we'll false out the `jetpack_photon_override_image_downsize` filter.
+	 *
+	 * @see Jetpack_Photon::filter_image_downsize()
+	 *
+	 * @param null|WP_Error   $response
+	 * @param array           $endpoint_data
+	 * @param WP_REST_Request $request  Request used to generate the response.
+	 *
+	 * @return null|WP_Error The original response object without modification.
+	 */
+	public function should_rest_photon_image_downsize( $response, $endpoint_data, $request ) {
+		if ( ! is_a( $request , 'WP_REST_Request' ) ) {
+			return $response; // Something odd is happening. Do nothing and return the response.
+		}
+
+		if ( is_wp_error( $response ) ) {
+			// If we're going to return an error, we don't need to do anything with Photon.
+			return $response;
+		}
+
+		$route = $request->get_route();
+
+		if ( false !== strpos( $route, 'wp/v2/media' ) && 'edit' === $request['context'] ) {
+			// Don't use `__return_true()`: Use something unique. See ::_override_image_downsize_in_rest_edit_context()
+			// Late execution to avoid conflict with other plugins as we really don't want to run in this situation.
+			add_filter( 'jetpack_photon_override_image_downsize', array( $this, '_override_image_downsize_in_rest_edit_context' ), 999999 );
+		}
+
+		return $response;
+
+	}
+
+	/**
+	 * Remove the override we may have added in ::should_rest_photon_image_downsize()
+	 * Since ::_override_image_downsize_in_rest_edit_context() is only
+	 * every used here, we can always remove it without ever worrying
+	 * about breaking any other configuration.
+	 *
+	 * @param mixed $response
+	 * @return mixed Unchanged $response
+	 */
+	public function cleanup_rest_photon_image_downsize( $response ) {
+		remove_filter( 'jetpack_photon_override_image_downsize', array( $this, '_override_image_downsize_in_rest_edit_context' ), 999999 );
+		return $response;
+	}
+
+	/**
+	 * Used internally by ::should_rest_photon_image_downsize() to not photonize
+	 * image URLs in ?context=edit REST requests.
+	 * MUST NOT be used anywhere else.
+	 * We use a unique function instead of __return_true so that we can clean up
+	 * after ourselves without breaking anyone else's filters.
+	 *
+	 * @internal
+	 * @return true
+	 */
+	public function _override_image_downsize_in_rest_edit_context() {
+		return true;
 	}
 }

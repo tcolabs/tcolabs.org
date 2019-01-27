@@ -1,0 +1,31 @@
+[26-Jan-2019 23:28:20 UTC] PHP Fatal error:  Allowed memory size of 94371840 bytes exhausted (tried to allocate 49152 bytes) in /home/antgar59/tcolabs.org/wp-content/plugins/wordpress-seo/frontend/class-frontend.php on line 777
+[26-Jan-2019 23:28:59 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/antgar59/tcolabs.org/wp-content/plugins/revslider/includes/framework/base-admin.class.php:71
+Stack trace:
+#0 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(572): RevSliderBaseAdmin::addMetaBox('Revolution Slid...', '', Array, NULL)
+#1 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(73): RevSliderAdmin->addSliderMetaBox()
+#2 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(44): RevSliderAdmin->init()
+#3 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/revslider.php(162): RevSliderAdmin->__construct('/home/antgar59/...')
+#4 /home/antgar59/tcolabs.org/wp-settings.php(322): include_once('/home/antgar59/...')
+#5 /home/antgar59/tcolabs.org/wp-config.php(93): require_once('/home/antgar59/...')
+#6 /home/antgar59/tcolabs.org/wp-load.php(37): require_once('/home/antgar59/...')
+#7 /home/antgar59/tcolabs.org/wp-admin/admin.php(31): re in /home/antgar59/tcolabs.org/wp-content/plugins/revslider/includes/framework/base-admin.class.php on line 71
+[26-Jan-2019 23:29:01 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/antgar59/tcolabs.org/wp-content/plugins/revslider/includes/framework/base-admin.class.php:71
+Stack trace:
+#0 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(572): RevSliderBaseAdmin::addMetaBox('Revolution Slid...', '', Array, NULL)
+#1 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(73): RevSliderAdmin->addSliderMetaBox()
+#2 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(44): RevSliderAdmin->init()
+#3 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/revslider.php(162): RevSliderAdmin->__construct('/home/antgar59/...')
+#4 /home/antgar59/tcolabs.org/wp-settings.php(322): include_once('/home/antgar59/...')
+#5 /home/antgar59/tcolabs.org/wp-config.php(93): require_once('/home/antgar59/...')
+#6 /home/antgar59/tcolabs.org/wp-load.php(37): require_once('/home/antgar59/...')
+#7 /home/antgar59/tcolabs.org/wp-admin/admin.php(31): re in /home/antgar59/tcolabs.org/wp-content/plugins/revslider/includes/framework/base-admin.class.php on line 71
+[26-Jan-2019 23:29:02 UTC] PHP Fatal error:  Uncaught Error: [] operator not supported for strings in /home/antgar59/tcolabs.org/wp-content/plugins/revslider/includes/framework/base-admin.class.php:71
+Stack trace:
+#0 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(572): RevSliderBaseAdmin::addMetaBox('Revolution Slid...', '', Array, NULL)
+#1 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(73): RevSliderAdmin->addSliderMetaBox()
+#2 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/admin/revslider-admin.class.php(44): RevSliderAdmin->init()
+#3 /home/antgar59/tcolabs.org/wp-content/plugins/revslider/revslider.php(162): RevSliderAdmin->__construct('/home/antgar59/...')
+#4 /home/antgar59/tcolabs.org/wp-settings.php(322): include_once('/home/antgar59/...')
+#5 /home/antgar59/tcolabs.org/wp-config.php(93): require_once('/home/antgar59/...')
+#6 /home/antgar59/tcolabs.org/wp-load.php(37): require_once('/home/antgar59/...')
+#7 /home/antgar59/tcolabs.org/wp-admin/admin.php(31): re in /home/antgar59/tcolabs.org/wp-content/plugins/revslider/includes/framework/base-admin.class.php on line 71

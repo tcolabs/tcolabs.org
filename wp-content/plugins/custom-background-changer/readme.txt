@@ -1,10 +1,10 @@
 === Custom Background Changer ===
 Contributors: anshuln90
-Tags: custom background changer, custom background, background changer, bg chnage, post backgraound, page background, change color, bg color, bg changer, wp background chnage, how to change background, color picker, background image, image, color, color picker, post, page, plugin
-Donate link: http://goo.gl/8xSU4I
+Tags: custom background changer, custom background, background changer, bg chnage, post backgraound, page background, change color, bg color, bg changer, wp background chnage, how to change background, color picker, background image, image, color, color picker, post, page, plugin, anshul, anshullabs, anshul labs
+Donate link: http://www.paypal.me/anshulgangrade
 Requires at least: 3.5
-Tested up to: 4.5.3
-Stable tag: 2.0
+Tested up to: 4.9.4
+Stable tag: 3.0
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,10 @@ The Custom Background Changer plugin supports the following features:
 <li> Options for Fade out the bottom edge of your background image</li>
 </ul>
 
-If you are having any kind of issue with configuring our plugin. In case you face any problem, Contact us on hello@anshullabs.xyz
+<a href="http://www.paypal.me/anshulgangrade" rel="nofollow">Donate Me</a>
+
+
+If you are having any kind of issue with configuring our plugin or you face any problem, Contact us on hello@anshullabs.xyz
 
 
 == Installation ==
@@ -44,9 +47,15 @@ Create new post/page of edit post/page. then add Choose background colour detail
 5. screenshot-5.png
 
 == Changelog ==
-1.0 Initial Release.
-2.0 Fixed some bugs.
+= 3.0 =
+Fixed some bugs.
+Change metabox layout.
+= 2.0 =
+Fixed some bugs.
+= 1.0 =
+Initial Release.
 
 == Upgrade Notice ==
-1.0 Initial Release.
+3.0 Update plugin.
 2.0 Update plugin.
+1.0 Initial Release.

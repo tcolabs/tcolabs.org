@@ -398,7 +398,7 @@ $this->addField( "General", "compressHTML", array(
     "excludeFrom" => array(),
 ) );
 $this->addField( "Links & Lightbox", "lightbox", array(
-    "name"        => "Lightbox &amp; Links",
+    "name"        => "Links &amp; Lightbox",
     "type"        => "select",
     "description" => "Define here what happens when user click on the images. Lightboxes with video support: EverlightBox, LightGallery, Magnific popup, Colorbox (require embed URL)); PrettyPhoto, FancyBox (require embed URL)",
     "values"      => array(
@@ -418,7 +418,7 @@ $this->addField( "Links & Lightbox", "lightbox", array(
     "excludeFrom" => array(),
 ) );
 $this->addField( "Links & Lightbox", "mobileLightbox", array(
-    "name"        => "Lightbox &amp; Links (mobile)",
+    "name"        => "Links &amp; Lightbox (mobile)",
     "type"        => "select",
     "description" => "Define here what happens when user click on the images. Lightboxes with video support: EverlightBox, LightGallery, Magnific popup, Colorbox (require embed URL)); PrettyPhoto, FancyBox (require embed URL)",
     "values"      => array(

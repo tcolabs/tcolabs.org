@@ -26,21 +26,23 @@ if(! class_exists('FinalTilesDB'))
 		public function update_config($id, $data)
 		{
 			global $wpdb;
-
-			$wpdb->update($wpdb->FinalTilesGalleries, array('configuration' => $data), array('Id' => $id));
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$wpdb->update($tb_g, array('configuration' => $data), array('Id' => $id));
 		}
 
 		public function updateConfiguration()
 		{
 			global $wpdb;
-			$galleries = $wpdb->get_results("SELECT * FROM $wpdb->FinalTilesGalleries");
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+
+			$galleries = $wpdb->get_results("SELECT * FROM $tb_g");
 			foreach($galleries as $gallery)
 			{
 				if($gallery->configuration == NULL)
 				{
 					unset($gallery->configuration);
 					$configuration = json_encode($gallery);				
-					$wpdb->update($wpdb->FinalTilesGalleries, 
+					$wpdb->update($tb_g, 
 									array('configuration' => $configuration),
 									array('Id' => $gallery->Id));
 				}
@@ -51,9 +53,11 @@ if(! class_exists('FinalTilesDB'))
 		public function addGallery($data) 
 		{
 			global $wpdb;		  
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+
 			$configuration = json_encode($data);
 			$data = array('configuration' => $configuration);
-			$galleryAdded =  $wpdb->insert( $wpdb->FinalTilesGalleries, $data);
+			$galleryAdded =  $wpdb->insert( $tb_g, $data);
 			return $galleryAdded;
 		}
 		
@@ -66,15 +70,20 @@ if(! class_exists('FinalTilesDB'))
 		public function deleteGallery($gid) 
 		{
 			global $wpdb;
-			$wpdb->query($wpdb->prepare("DELETE FROM $wpdb->FinalTilesImages WHERE gid = %d", $gid));
-			$wpdb->query($wpdb->prepare("DELETE FROM $wpdb->FinalTilesGalleries WHERE Id = %d", $gid));
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			$wpdb->query($wpdb->prepare("DELETE FROM $tb_i WHERE gid = %d", $gid));
+			$wpdb->query($wpdb->prepare("DELETE FROM $tb_g WHERE Id = %d", $gid));
 		}
 		
 		public function editGallery($gid, $data) 
 		{
 			global $wpdb;
 			$configuration = json_encode($data);
-			$g = $wpdb->update($wpdb->FinalTilesGalleries, 
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+
+			$g = $wpdb->update($tb_g, 
 							array('configuration' => $configuration),
 							array('Id' => $gid));
 							
@@ -85,14 +94,18 @@ if(! class_exists('FinalTilesDB'))
 		public function getGalleryConfig($id)
 		{
 			global $wpdb;
-			$gallery = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->FinalTilesGalleries WHERE Id = %d", $id));
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			$gallery = $wpdb->get_row($wpdb->prepare("SELECT * FROM $tb_g WHERE Id = %d", $id));
 
 			return $gallery->configuration;
 		}
 		public function getGalleryById($id, $array=false) 
 		{
 			global $wpdb;
-			$gallery = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->FinalTilesGalleries WHERE Id = %d", $id));
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			$gallery = $wpdb->get_row($wpdb->prepare("SELECT * FROM $tb_g WHERE Id = %d", $id));
 
 			if($array)
 			{
@@ -126,7 +139,10 @@ if(! class_exists('FinalTilesDB'))
 		public function getGalleries() 
 		{
 			global $wpdb;
-			$query = "SELECT Id, configuration FROM $wpdb->FinalTilesGalleries order by id";
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+
+			$query = "SELECT Id, configuration FROM $tb_g order by id";
 			$galleryResults = $wpdb->get_results( $query );
 			
 			$result = array();
@@ -142,23 +158,28 @@ if(! class_exists('FinalTilesDB'))
 		public function addVideo($data) 
 		{
 			global $wpdb;		
-			$videoAdded = $wpdb->insert( $wpdb->FinalTilesImages,
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+
+			$videoAdded = $wpdb->insert( $tb_i,
 			        array( 'gid' => $data['gid'], 'imagePath' => $data['imagePath'], 'type' => 'video', 'sortOrder' => 0, 'imageId' => rand(100000, 1000000) ));
 			$id = $wpdb->insert_id;
-	        $wpdb->update($wpdb->FinalTilesImages, array('sortOrder' => $id), array('id' => $id));
+	        $wpdb->update($tb_i, array('sortOrder' => $id), array('id' => $id));
 			return $videoAdded;
 		}
 		
 		public function editVideo($id, $data)
 		{
 			global $wpdb;
-			$result = $wpdb->update( $wpdb->FinalTilesImages, $data, array( 'Id' => $id ) );
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			$result = $wpdb->update( $tb_i, $data, array( 'Id' => $id ) );
 			return $result;
 		}
 
 		public function addImages($gid, $images) 
 		{		
 			global $wpdb;		
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
 
 			foreach ($images as $image) {
 				if(! isset($image->group))
@@ -176,9 +197,9 @@ if(! class_exists('FinalTilesDB'))
 
 				$data['type'] = isset($image->type) ? $image->type : 'image';
 
-				$imageAdded = $wpdb->insert( $wpdb->FinalTilesImages, $data );
+				$imageAdded = $wpdb->insert( $tb_i, $data );
 				$id = $wpdb->insert_id;
-				$wpdb->update($wpdb->FinalTilesImages, array('sortOrder' => $id), array('id' => $id));
+				$wpdb->update($tb_i, array('sortOrder' => $id), array('id' => $id));
 			}
 			
 			return true;
@@ -186,14 +207,16 @@ if(! class_exists('FinalTilesDB'))
 		
 		public function addFullImage($data) {
 			global $wpdb;		
-			$imageAdded = $wpdb->insert( $wpdb->FinalTilesImages, $data );
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			$imageAdded = $wpdb->insert( $tb_i, $data );
 			return $imageAdded;
 		}
 		
 		public function deleteImage($id) {
 			global $wpdb;
-			$query = "DELETE FROM $wpdb->FinalTilesImages WHERE Id = '$id'";
-			if($wpdb->query($wpdb->prepare("DELETE FROM $wpdb->FinalTilesImages WHERE Id = %d", $id)) === FALSE) {
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			$query = "DELETE FROM $tb_i WHERE Id = '$id'";
+			if($wpdb->query($wpdb->prepare("DELETE FROM $tb_i WHERE Id = %d", $id)) === FALSE) {
 				return false;
 			}
 			else {
@@ -204,24 +227,27 @@ if(! class_exists('FinalTilesDB'))
 		public function editImage($id, $data) 
 		{
 			global $wpdb;
-			$imageEdited = $wpdb->update( $wpdb->FinalTilesImages, $data, array( 'Id' => $id ) );
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			$imageEdited = $wpdb->update( $tb_i, $data, array( 'Id' => $id ) );
 			return $imageEdited;
 		}
 
 		public function getImage($id)
 		{
 			global $wpdb;
-			return $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->FinalTilesImages WHERE id = %d", $id));
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
+			return $wpdb->get_row($wpdb->prepare("SELECT * FROM $tb_i WHERE id = %d", $id));
 		}
 
 		public function sortImages($ids) 
 		{
 			global $wpdb;
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
 			$index = 1;
 			foreach($ids as $id) 
 			{
 				$data = array('sortOrder' => $index++);
-				$wpdb->update( $wpdb->FinalTilesImages, $data, array( 'Id' => $id ) );
+				$wpdb->update( $tb_i, $data, array( 'Id' => $id ) );
 			}
 			return true;
 		}
@@ -229,10 +255,11 @@ if(! class_exists('FinalTilesDB'))
 		public function getImagesByGalleryId($gid, $skip=0, $size=0) 
 		{
 			global $wpdb;
+			$tb_i = $wpdb->prefix . "FinalTiles_gallery_images";
 
-			$q = $wpdb->prepare("SELECT * FROM $wpdb->FinalTilesImages WHERE gid = %d ORDER BY sortOrder ASC", $gid);
+			$q = $wpdb->prepare("SELECT * FROM $tb_i WHERE gid = %d ORDER BY sortOrder ASC", $gid);
 			if($size > 0)
-				$q = $wpdb->prepare("SELECT * FROM $wpdb->FinalTilesImages WHERE gid = %d ORDER BY sortOrder ASC LIMIT %d, %d", $gid, $skip, $size);
+				$q = $wpdb->prepare("SELECT * FROM $tb_i WHERE gid = %d ORDER BY sortOrder ASC LIMIT %d, %d", $gid, $skip, $size);
 
 			$imageResults = $wpdb->get_results($q);
 
@@ -250,7 +277,8 @@ if(! class_exists('FinalTilesDB'))
 		
 		public function getGalleryByGalleryId($gid) {
 			global $wpdb;
-			$gallery = $wpdb->get_results("SELECT $wpdb->FinalTilesGalleries.*, $wpdb->FinalTilesImages.* FROM $wpdb->FinalTilesGalleries INNER JOIN $wpdb->FinalTilesImages ON ($wpdb->FinalTilesGalleries.Id = $wpdb->FinalTilesImages.gid) WHERE $wpdb->FinalTilesGalleries.Id = '$gid' ORDER BY sortOrder ASC");		
+			$tb_g = $wpdb->prefix . "FinalTiles_gallery";
+			$gallery = $wpdb->get_results("SELECT $tb_g.*, $tb_i.* FROM $wpdb->FinalTiles_gallery INNER JOIN $tb_i ON ($wpdb->FinalTiles_gallery.Id = $tb_i.gid) WHERE $wpdb->FinalTiles_gallery.Id = '$gid' ORDER BY sortOrder ASC");		
 			return $gallery;
 		}
 	}

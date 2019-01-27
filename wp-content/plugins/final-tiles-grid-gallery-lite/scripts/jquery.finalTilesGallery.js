@@ -58,7 +58,10 @@ var qualifyURL = function (url) {
             allowEnlargement: true,
             autoLoadURL: null,
             selectedFilter: '',
-            setupFilters: true,            
+            loadMethod: 'sequential',
+            
+/* Premium Code Stripped by Freemius */
+            
             onComplete: function () {},
             onUpdate: function () {},
             onLoading: function () {},
@@ -201,12 +204,12 @@ var qualifyURL = function (url) {
                 var hash_class = ft.replace('#','.');
                 var filters = [];
 
-                 instance.$element.find(".ftg-filters a").each(function(){
+                instance.$element.find(".ftg-filters a").each(function(){
                     filters.push($(this).attr('href'));
-                 });
+                });
 
-                 if($.inArray(ft, filters) >= 0)
-                 {
+                if($.inArray(ft, filters) >= 0)
+                {
                    hash_class = hash_class.substring(1);       
 
                     instance.$element.find(".ftg-filters a").each(function(){
@@ -296,9 +299,17 @@ var qualifyURL = function (url) {
                 });
             }
 
-            if(this.settings.setupFilters)
-                this.setupFilters();
+            
+/* Premium Code Stripped by Freemius */
+
             this.edges.push({ left: 0, top: 0, width: this.currentWidth, index: 0 });
+
+            this.isImageLoading = false;
+            if(this.settings.loadMethod == 'lazy') {				
+				$(window).scroll(function(event) {  
+					instance.loadImage();
+				});				
+			}
             this.loadImage();
         },
         addElements: function (html) {
@@ -314,35 +325,9 @@ var qualifyURL = function (url) {
             this.$element.find(".ftg-items").height(0).empty();
             this.refresh();
         },
-        setupFilters: function() {
-            var instance = this;
-            instance.$element.find(".ftg-filters a").click(function(e) {
-                e.preventDefault();
+        
+/* Premium Code Stripped by Freemius */
 
-                instance.$element.find(".ftg-filters a").removeClass("selected");
-                $(this).addClass("selected");
-
-                var ft = $(this).attr("href").replace("#ftg-set-", "");
-                if(ft == "ftgall") {
-                    instance.$element.find(".tile").removeClass("ftg-filter-hidden-tile");
-                    instance.$element.find(".tile a").addClass("everlightbox-trigger");
-                } else {
-                    instance.$element.find(".everlightbox-trigger").removeClass("everlightbox-trigger");
-                    instance.$element
-                                .find(".tile")
-                                .not(".ftg-set-" + ft)
-                                .addClass("ftg-filter-hidden-tile")
-                                .end()
-                                .filter(".ftg-set-" + ft)
-                                .removeClass("ftg-filter-hidden-tile");
-
-                    instance.$element
-                                .find(".ftg-set-" + ft + " a")
-                                .addClass("everlightbox-trigger");
-                }
-                instance.refresh();
-            });
-        },
         printEdges: function () {
             this.$element.find(".edge").remove();
             for (i = 0; i < this.edges.length; i++) {
@@ -419,6 +404,7 @@ var qualifyURL = function (url) {
         
         nextTile : function (add) {
             var instance = this;
+            instance.isImageLoading = false;
             if(add)
                 instance.add(instance._loadedImages);
 
@@ -428,15 +414,32 @@ var qualifyURL = function (url) {
                 var height = instance.lowerEdgeTop();
                 instance.print("lower edge top: " + height);
                 //instance.$element.find(".ftg-items").height(height);
-                instance.isLoading = false;
+                instance.isLoading = false;                
                 instance.settings.onComplete();
             }
         },
         
         /*! loadImage */
         loadImage: function () {
-            var instance = this;            
+            var instance = this;
+
+            if(instance.isImageLoading || this.tiles.not(".ftg-loaded").length == 0) {
+                this.print("No more images to load");
+	            return;
+            }
+            
+            instance.isImageLoading = true;
+
             var $tile = this.tiles.eq(this._loadedImages);
+
+            if(instance._loadedImages > 0) {
+	            var $last = instance.tiles.filter(".ftg-loaded").last();
+	            
+	            if(instance.settings.loadMethod == 'lazy' && !$last.visible(true)) {
+		            instance.isImageLoading = false;
+		            return;
+	            }
+            }
 
             if($tile.find("iframe").length)
                 $tile.find("iframe").addClass("item");
@@ -882,6 +885,9 @@ var qualifyURL = function (url) {
     };
 
     $(function () {
+        
+/* Premium Code Stripped by Freemius */
+
         $(".ftg-social a").click(function(e) {
 
             e.preventDefault();

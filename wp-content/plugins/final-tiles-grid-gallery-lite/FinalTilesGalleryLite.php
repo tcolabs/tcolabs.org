@@ -5,15 +5,42 @@
  * Plugin URI: https://www.final-tiles-gallery.com
  * Description: Wordpress Plugin for creating responsive image galleries. By: GreenTreeLabs
  * Author: Green Tree Labs
- * Version: 3.3.37
+ * Version: 3.3.52
  * Author URI: https://www.greentreelabs.net
  * 
  * @fs_premium_only /lightbox-pro/ 
  *
  */
-define( "FTGVERSION", "3.3.37" );
+define( "FTGVERSION", "3.3.52" );
 /*
 Changelog:
+    3.3.52
+        Fixed database installation
+    3.3.49
+        Fixed multisite activation
+    3.3.48
+        Fixed mobile lightbox options
+    3.3.47
+        Fixed issue when activating the premium version
+    3.3.46
+        Better compatibility with external lazy loading scripts
+    3.3.45
+        Fixed lazy loading
+    3.3.44
+        WooCommerce Fix
+    3.3.43
+        Admin UI tweaks
+    3.3.42
+        Fix: lightbox params
+    3.3.41
+        New feature: lightbox params
+    3.3.40
+        Improved performances
+    3.3.39
+        Updated LightGallery
+    3.3.38
+        Fixed Fatal error "Cannot redeclare ftg_admin_script()"
+        Use custom taxonomy as filters in post galleries
     3.3.37
         PhotoBlocks banners
     3.3.36
@@ -306,6 +333,28 @@ if ( !function_exists( "ftg_fs" ) ) {
         return $ftg_fs;
     }
     
+    function activate_finaltilesgallery()
+    {
+        global  $wpdb ;
+        include_once 'lib/install-db.php';
+        FinalTiles_Gallery::define_db_tables();
+        if ( !$installed_ver ) {
+            update_option( "FinalTiles_gallery_db_version", $ftg_db_version );
+        }
+        FinalTilesdb::updateConfiguration();
+        
+        if ( is_multisite() ) {
+            foreach ( $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs}" ) as $blog_id ) {
+                switch_to_blog( $blog_id );
+                install_db();
+                restore_current_blog();
+            }
+        } else {
+            install_db();
+        }
+    
+    }
+    
     // Init Freemius.
     ftg_fs();
     // Signal that SDK was initiated.
@@ -346,6 +395,7 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             'captionOpacity'                      => 80,
             'captionPosition'                     => 'inside',
             'captionVerticalAlignment'            => 'middle',
+            'categoriesAsFilters'                 => 'F',
             'columns'                             => 4,
             'columnsPhoneLandscape'               => 3,
             'columnsPhonePortrait'                => 2,
@@ -381,6 +431,8 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             'lazyLoad'                            => false,
             'lightbox'                            => 'lightbox2',
             'lightboxImageSize'                   => 'large',
+            'lightboxOptions'                     => '',
+            'lightboxOptionsMobile'               => '',
             'loadedDuration'                      => 500,
             'loadedEasing'                        => 'ease-out',
             'loadedHSlide'                        => 0,
@@ -427,7 +479,6 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             $this->setupFields();
             $this->define_db_tables();
             $this->FinalTilesdb = $this->create_db_conn();
-            register_activation_hook( __FILE__, array( $this, 'activation' ) );
             add_filter( 'widget_text', 'do_shortcode' );
             add_action( 'plugins_loaded', array( $this, 'create_textdomain' ) );
             add_action( 'wp_enqueue_scripts', array( $this, 'add_gallery_scripts' ) );
@@ -461,12 +512,10 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             );
             add_action( 'wp_ajax_load_chunk', array( $this, 'load_chunk' ) );
             add_action( 'wp_ajax_nopriv_load_chunk', array( $this, 'load_chunk' ) );
-            add_action( 'admin_notices', array( $this, 'photoblocks_notice' ) );
             
             if ( ftg_fs()->is_not_paying() ) {
                 add_action( 'admin_notices', array( $this, 'review' ) );
                 add_action( 'wp_ajax_ftg_dismiss_review', array( $this, 'dismiss_review' ) );
-                add_action( 'wp_ajax_ftg_dismiss_photoblocks', array( $this, 'dismiss_photoblocks' ) );
                 add_filter(
                     'admin_footer_text',
                     array( $this, 'admin_footer' ),
@@ -476,68 +525,6 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             }
             
             $this->resetFields();
-        }
-        
-        public function photoblocks_notice()
-        {
-            // Verify that we can do a check for reviews.
-            $review = get_option( 'ftg_photoblocks' );
-            $time = time();
-            $load = false;
-            $there_was_review = false;
-            
-            if ( !$review ) {
-                $review = array(
-                    'time'      => $time,
-                    'dismissed' => false,
-                );
-                $load = true;
-                $there_was_review = false;
-            } else {
-                // Check if it has been dismissed or not.
-                if ( isset( $review['dismissed'] ) && !$review['dismissed'] && (isset( $review['time'] ) && $review['time'] + DAY_IN_SECONDS <= $time) ) {
-                    $load = true;
-                }
-            }
-            
-            // If we cannot load, return early.
-            if ( !$load ) {
-                return;
-            }
-            // We have a candidate! Output a review message.
-            ?>
-            <div class="notice notice-info is-dismissible ftg-photoblocks-notice">
-                <p><?php 
-            _e( 'We released a new gallery plugin, have a look at <strong><a href="https://wordpress.org/plugins/photoblocks-grid-gallery/">PhotoBlocks Grid Gallery</a></strong>!', 'final-tiles-gallery-lite' );
-            ?></p>
-                <p>
-                    <a style="margin-right:10px;" href="https://wordpress.org/plugins/photoblocks-grid-gallery/" class="ftg-dismiss-photoblocks-notice ftg-photoblocks-out" target="_blank" rel="noopener"><?php 
-            _e( 'Ok', 'final-tiles-gallery-lite' );
-            ?></a>
-                    <a style="margin-right:10px;" href="#" class="ftg-dismiss-photoblocks-notice" rel="noopener"><?php 
-            _e( 'Maybe later', 'final-tiles-gallery' );
-            ?></a>
-                    <a href="#" class="ftg-dismiss-photoblocks-notice" rel="noopener"><?php 
-            _e( 'I already did', 'final-tiles-gallery' );
-            ?></a>
-                </p>
-            </div>
-            <script type="text/javascript">
-                jQuery(document).ready( function($) {
-                    $(document).on('click', '.ftg-dismiss-photoblocks-notice, .ftg-photoblocks-notice button', function( event ) {
-                        if ( ! $(this).hasClass('ftg-photoblocks-out') ) {
-                            event.preventDefault();
-                        }
-
-                        $.post( ajaxurl, {
-                            action: 'ftg_dismiss_photoblocks'
-                        });
-
-                        $('.ftg-photoblocks-notice').remove();
-                    });
-                });
-            </script>            
-            <?php 
         }
         
         public function review()
@@ -651,18 +638,6 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             die;
         }
         
-        public function dismiss_photoblocks()
-        {
-            $review = get_option( 'ftg_photoblocks' );
-            if ( !$review ) {
-                $review = array();
-            }
-            $review['time'] = time();
-            $review['dismissed'] = true;
-            update_option( 'ftg_photoblocks', $review );
-            die;
-        }
-        
         public function admin_footer( $text )
         {
             global  $current_screen ;
@@ -716,16 +691,16 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             return $links;
         }
         
-        public function create_db_tables()
-        {
-            include_once 'lib/install-db.php';
-            install_db();
-        }
+        /*public function create_db_tables()
+                {
+                    include_once 'lib/install-db.php';
+                    install_db();
+                }
         
-        public function activation()
-        {
-        }
+                public function activation()
+                {
         
+                }*/
         //Define textdomain
         public function create_textdomain()
         {
@@ -748,7 +723,7 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
         }
         
         //Define DB tables
-        public function define_db_tables()
+        public static function define_db_tables()
         {
             global  $wpdb ;
             $wpdb->FinalTilesGalleries = $wpdb->prefix . 'FinalTiles_gallery';
@@ -904,18 +879,19 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
             if ( function_exists( 'wp_enqueue_media' ) ) {
                 wp_enqueue_media();
             }
-            $ftg_db_version = '5.0';
-            $installed_ver = get_option( "FinalTiles_gallery_db_version" );
-            if ( !$installed_ver ) {
-                update_option( "FinalTiles_gallery_db_version", $ftg_db_version );
-            }
-            $this->FinalTilesdb->updateConfiguration();
+            /*$ftg_db_version = '5.0';
+                        $installed_ver = get_option("FinalTiles_gallery_db_version");
             
-            if ( $installed_ver != $ftg_db_version ) {
-                $this->create_db_tables();
-                update_option( "FinalTiles_gallery_db_version", $ftg_db_version );
-            }
+                        if (!$installed_ver) {
+            				update_option("FinalTiles_gallery_db_version", $ftg_db_version);
+                        }
             
+                        $this->FinalTilesdb->updateConfiguration();
+            
+                        if ($installed_ver != $ftg_db_version) {
+                            $this->create_db_tables();
+                            update_option("FinalTiles_gallery_db_version", $ftg_db_version);
+                        }*/
             function ftg_get_image_sizes()
             {
                 global  $_wp_additional_image_sizes ;
@@ -1001,18 +977,20 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
                 'ftg-tutorial',
                 array( $this, 'tutorial' )
             );
-            $photoblocks = add_submenu_page(
-                'ftg-lite-gallery-admin',
-                __( 'FinalTiles Gallery >> PhotoBlocks', 'FinalTiles-gallery' ),
-                __( 'PhotoBlocks', 'FinalTiles-gallery' ),
-                'edit_posts',
-                'ftg-photoblocks',
-                array( $this, 'photoblocks' )
-            );
             add_action( 'load-' . $tutorial, array( $this, 'gallery_admin_init' ) );
             add_action( 'load-' . $overview, array( $this, 'gallery_admin_init' ) );
             add_action( 'load-' . $add_gallery, array( $this, 'gallery_admin_init' ) );
-            add_action( 'load-' . $photoblocks, array( $this, 'gallery_admin_init' ) );
+            /*if(! class_exists("PhotoBlocks"))
+                        {            
+                            $photoblocks = add_submenu_page('ftg-lite-gallery-admin', __('FinalTiles Gallery >> PhotoBlocks', 'FinalTiles-gallery'), __('PhotoBlocks', 'FinalTiles-gallery'), 'edit_posts', 'ftg-photoblocks', array($this, 'photoblocks'));
+                            add_action('load-' . $photoblocks, array($this, 'gallery_admin_init'));
+                        }
+            
+                        if(! class_exists("EverlightBox"))
+                        {
+                            $everlightbox = add_submenu_page('ftg-lite-gallery-admin', __('FinalTiles Gallery >> EverlightBox', 'FinalTiles-gallery'), __('EverlightBox', 'FinalTiles-gallery'), 'edit_posts', 'ftg-everlightbox', array($this, 'everlightbox'));
+                            add_action('load-' . $everlightbox, array($this, 'gallery_admin_init'));
+                        }*/
         }
         
         //Create Admin Pages
@@ -1055,6 +1033,11 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
         public function photoblocks()
         {
             include "admin/photoblocks.php";
+        }
+        
+        public function everlightbox()
+        {
+            include "admin/everlightbox.php";
         }
         
         private function getWooCategories()
@@ -1474,6 +1457,8 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
                     'slug'                                => $slug,
                     'description'                         => $galleryDescription,
                     'lightbox'                            => $lightbox,
+                    'lightboxOptions'                     => $_POST['ftg_lightboxOptions'],
+                    'lightboxOptionsMobile'               => $_POST['lightboxOptionsMobile'],
                     'mobileLightbox'                      => $mobileLightbox,
                     'lightboxImageSize'                   => $_POST['ftg_lightboxImageSize'],
                     'blank'                               => $blank,
@@ -1538,6 +1523,7 @@ if ( !class_exists( 'FinalTiles_Gallery' ) ) {
                     'imageSizeFactorPhoneLandscape'       => intval( $_POST['ftg_imageSizeFactorPhoneLandscape'] ),
                     'imageSizeFactorPhonePortrait'        => intval( $_POST['ftg_imageSizeFactorPhonePortrait'] ),
                     'imageSizeFactorCustom'               => $_POST['ftg_imageSizeFactorCustom'],
+                    'taxonomyAsFilter'                    => $_POST['ftg_taxonomyAsFilter'],
                     'columns'                             => intval( $_POST['ftg_columns'] ),
                     'columnsTabletLandscape'              => intval( $_POST['ftg_columnsTabletLandscape'] ),
                     'columnsTabletPortrait'               => intval( $_POST['ftg_columnsTabletPortrait'] ),
@@ -1783,10 +1769,15 @@ if ( class_exists( "FinalTiles_Gallery" ) ) {
     $ob_FinalTiles_Gallery = new FinalTiles_Gallery();
 }
 
-function ftg_admin_script()
-{
-    wp_register_script( 'admin-generic-ftg', plugins_url( 'admin/scripts/admin.js', __FILE__ ), array( 'jquery' ) );
-    wp_enqueue_script( 'admin-generic-ftg' );
+
+if ( !function_exists( "ftg_admin_script" ) ) {
+    function ftg_admin_script()
+    {
+        wp_register_script( 'admin-generic-ftg', plugins_url( 'admin/scripts/admin.js', __FILE__ ), array( 'jquery' ) );
+        wp_enqueue_script( 'admin-generic-ftg' );
+    }
+    
+    add_action( 'admin_enqueue_scripts', 'ftg_admin_script' );
 }
 
-add_action( 'admin_enqueue_scripts', 'ftg_admin_script' );
+register_activation_hook( __FILE__, 'activate_finaltilesgallery' );

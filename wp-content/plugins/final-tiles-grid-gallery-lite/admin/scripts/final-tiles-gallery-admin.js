@@ -985,8 +985,14 @@ var FTG = function($) {
                         scrollTop: $("#" + target).offset().top - 28
                     }, 1000);
                 }, 500);
+            });
 
-
+            $(".open-checkout").click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr("href");
+                
+                var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=yes,width=650";
+                window.open(url, "EverlightBox", strWindowFeatures);                
             });
         },
         init: function() {
@@ -1183,7 +1189,5 @@ jQuery(function() {
     });
     FTG.init();
     FTGWizard.init();
-
-
     
 });

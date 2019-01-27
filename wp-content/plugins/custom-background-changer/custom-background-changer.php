@@ -3,7 +3,7 @@
 Plugin Name: Custom Background Changer
 Plugin URI: https://wordpress.org/plugins/custom-background-changer/
 Description: A WordPress plugin to change different background color or image on post or page.
-Version: 2.0
+Version: 3.0
 Author: Anshul Labs
 Author URI: http://anshullabs.xyz
 textdomain: custom_background_changer
@@ -27,7 +27,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define('CBC_VERSION', '2.0');
+define('CBC_VERSION', '3.0');
 define('CBC_FILE', basename(__FILE__));
 define('CBC_NAME', str_replace('.php', '', CBC_FILE));
 define('CBC_PATH', plugin_dir_path(__FILE__));
@@ -62,8 +62,7 @@ function cbc_style_script_enqueue() {
  */
 add_action( 'add_meta_boxes', 'cbc_custom_background_changer_metabox' );
 function cbc_custom_background_changer_metabox() {
-    add_meta_box( 'cbc_metafield', __( 'Custom Background Changer', $textdomain ), 'cbc_meta_callback', array('post','page') );
-    //add_meta_box( $id, $title, $callback, $screen, $context, $priority, $callback_args );
+    add_meta_box( 'cbc_metafield', __( 'Custom Background Changer Option', $textdomain ), 'cbc_meta_callback', array('post','page') );
 }
 
 /*
@@ -73,7 +72,10 @@ function cbc_meta_callback( $post ) {
 	$cbc_storedmeta = get_post_meta( $post->ID );	
 	wp_nonce_field( 'cbc_nonce_action', 'cbc_nonce' );
     ?>
-    <p>
+    <div class="cbc-info">
+    	<h2>Design Option</h2>
+    </div>
+    <div class="cbc-field-wrap">
    		<label for="cbc-bg-option" class="cbc-row-title">
     		<?php _e( 'Background Option :', $textdomain );?>
     	</label>
@@ -88,21 +90,25 @@ function cbc_meta_callback( $post ) {
 	        </label> 
 	    	<span style="clear: both;"></span>
 	    </span>
-	</p> 
-    <p>
+	</div> 
+    <div class="cbc-field-wrap">
     	<label for="cbc-bgcolor" class="cbc-row-title">
     		<?php _e( 'Background Color :', $textdomain );?>
     	</label>
-    	<input name="cbc-bgcolor" type="text" value="<?php if ( isset ( $cbc_storedmeta['cbc-bgcolor'] ) ) echo $cbc_storedmeta['cbc-bgcolor'][0]; ?>" class="cbc-bgcolor" />
-	</p>
-	<p>
+    	<span class="cbc-row-content" style="display: inline;">
+    		<input name="cbc-bgcolor" type="text" value="<?php if ( isset ( $cbc_storedmeta['cbc-bgcolor'] ) ) echo $cbc_storedmeta['cbc-bgcolor'][0]; ?>" class="cbc-bgcolor" />
+    	</span>
+	</div>
+	<div class="cbc-field-wrap">
 	    <label for="cbc-bgimage" class="cbc-row-title">
 	    	<?php _e( 'Background Image :', $textdomain );?>
 	    </label>
-	    <input type="text" name="cbc-bgimage" id="cbc-bgimage" value="<?php if ( isset ( $cbc_storedmeta['cbc-bgimage'] ) ) echo $cbc_storedmeta['cbc-bgimage'][0]; ?>" />
-	    <input type="button" id="cbc-bgimage-button" class="button" value="<?php _e( 'Choose or Upload an Image', $textdomain )?>" />
-	</p>
-	<p>
+	    <span class="cbc-row-content" style="display: inline;">
+		    <input type="text" name="cbc-bgimage" id="cbc-bgimage" value="<?php if ( isset ( $cbc_storedmeta['cbc-bgimage'] ) ) echo $cbc_storedmeta['cbc-bgimage'][0]; ?>" />
+		    <input type="button" id="cbc-bgimage-button" class="button" value="<?php _e( 'Choose or Upload an Image', $textdomain )?>" />
+	    </span>
+	</div>
+	<div class="cbc-field-wrap">
    		<label for="cbc-bg-attach" class="cbc-row-title">
     		<?php _e( 'Background Attachment :', $textdomain );?>
     	</label>
@@ -117,37 +123,40 @@ function cbc_meta_callback( $post ) {
 	        </label> 
 	    	<span style="clear: both;"></span>
 	    </span>
-	</p>
-	<p>
+	</div>
+	<div class="cbc-field-wrap">
 	    <label for="cbc-bgrepeat" class="cbc-row-title">
 	    	<?php _e( 'Background Repeat :', $textdomain );?>
 	   	</label>
-	    <select name="cbc-bgrepeat" id="cbc-bgrepeat">
-	        <option value="no-repeat" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'no-repeat' ); ?>>
-	        	<?php _e( 'No Repeat', $textdomain );?>
-	        </option>';
-	        <option value="repeat" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'repeat' ); ?>>
-	        	<?php _e( 'Repeated', $textdomain ); ?>
-	        </option>';
-	        <option value="repeat-x" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'repeat-x' ); ?>>
-	        	<?php _e( 'Repeated Horizontally', $textdomain );?>
-	        </option>';
-	        <option value="repeat-y" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'repeat-y' ); ?>>
-	        	<?php _e( 'Repeated Vertically', $textdomain );?>
-	        </option>';
-	    </select>
-	</p>
-
-	<p>
+	   	<span class="cbc-row-content" style="display: inline;">
+		    <select name="cbc-bgrepeat" id="cbc-bgrepeat">
+		        <option value="no-repeat" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'no-repeat' ); ?>>
+		        	<?php _e( 'No Repeat', $textdomain );?>
+		        </option>';
+		        <option value="repeat" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'repeat' ); ?>>
+		        	<?php _e( 'Repeated', $textdomain ); ?>
+		        </option>';
+		        <option value="repeat-x" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'repeat-x' ); ?>>
+		        	<?php _e( 'Repeated Horizontally', $textdomain );?>
+		        </option>';
+		        <option value="repeat-y" <?php if ( isset ( $cbc_storedmeta['cbc-bgrepeat'] ) ) selected( $cbc_storedmeta['cbc-bgrepeat'][0], 'repeat-y' ); ?>>
+		        	<?php _e( 'Repeated Vertically', $textdomain );?>
+		        </option>';
+		    </select>
+		</span>
+	</div>
+	<div class="cbc-field-wrap">
 	    <label for="cbc-bgposition" class="cbc-row-title">
 	    	<?php _e( 'Background Position :', $textdomain );?>
 	    </label>
-	    <select name="cbc-bgposition" id="cbc-bgposition">
-	        <option value="left" <?php if ( isset ( $cbc_storedmeta['cbc-bgposition'] ) ) selected( $cbc_storedmeta['cbc-bgposition'][0], 'left' ); ?>> <?php _e( 'Left', $textdomain );?> </option>';
-	        <option value="center" <?php if ( isset ( $cbc_storedmeta['cbc-bgposition'] ) ) selected( $cbc_storedmeta['cbc-bgposition'][0], 'center' ); ?>><?php _e( 'Center', $textdomain );?> </option>';
-	        <option value="right" <?php if ( isset ( $cbc_storedmeta['cbc-bgposition'] ) ) selected( $cbc_storedmeta['cbc-bgposition'][0], 'right' ); ?>><?php _e( 'Right', $textdomain );?> </option>';        
-	    </select>
-	</p>
+	    <span class="cbc-row-content" style="display: inline;">
+		    <select name="cbc-bgposition" id="cbc-bgposition">
+		        <option value="left" <?php if ( isset ( $cbc_storedmeta['cbc-bgposition'] ) ) selected( $cbc_storedmeta['cbc-bgposition'][0], 'left' ); ?>> <?php _e( 'Left', $textdomain );?> </option>';
+		        <option value="center" <?php if ( isset ( $cbc_storedmeta['cbc-bgposition'] ) ) selected( $cbc_storedmeta['cbc-bgposition'][0], 'center' ); ?>><?php _e( 'Center', $textdomain );?> </option>';
+		        <option value="right" <?php if ( isset ( $cbc_storedmeta['cbc-bgposition'] ) ) selected( $cbc_storedmeta['cbc-bgposition'][0], 'right' ); ?>><?php _e( 'Right', $textdomain );?> </option>';        
+		    </select>
+		</span>
+	</div>
 <?php
 }
 
@@ -261,4 +270,4 @@ function cbc_call_style_header() {
 	}
 	echo $out;
 }	
-?>
+

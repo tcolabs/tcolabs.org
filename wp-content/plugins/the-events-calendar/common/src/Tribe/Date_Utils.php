@@ -18,6 +18,7 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 		const MERIDIANFORMAT        = 'A';
 		const DBDATEFORMAT          = 'Y-m-d';
 		const DBDATETIMEFORMAT      = 'Y-m-d H:i:s';
+		const DBTZDATETIMEFORMAT    = 'Y-m-d H:i:s O';
 		const DBTIMEFORMAT          = 'H:i:s';
 		const DBYEARMONTHTIMEFORMAT = 'Y-m';
 
@@ -408,7 +409,7 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 		 * @return string
 		 */
 		public static function reformat( $dt_string, $new_format ) {
-			$timestamp = strtotime( $dt_string );
+			$timestamp = self::is_timestamp( $dt_string ) ? $dt_string : strtotime( $dt_string );
 			$revised   = date( $new_format, $timestamp );
 
 			return $revised ? $revised : '';
@@ -1167,7 +1168,6 @@ if ( ! class_exists( 'Tribe__Date_Utils' ) ) {
 			// Why so simple? Let's handle other cases as those come up. We have tests in place!
 			return str_replace( '\\\\', '\\', $date_format );
 		}
-		// @codingStandardsIgnoreEnd
 	}
 
 }

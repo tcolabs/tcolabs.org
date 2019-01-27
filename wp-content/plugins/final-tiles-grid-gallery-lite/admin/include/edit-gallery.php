@@ -42,7 +42,7 @@ if ( !function_exists( 'ftg_p' ) ) {
         }
         
         
-        if ( $gallery == NULL ) {
+        if ( $gallery == NULL || !isset( $gallery->{$field} ) ) {
             print "";
         } else {
             if ( $gallery->{$field} == $value ) {
@@ -54,7 +54,7 @@ if ( !function_exists( 'ftg_p' ) ) {
     
     function ftg_checkFieldDisabled( $options )
     {
-        if ( count( $options ) == 3 && $options[2] == "disabled" ) {
+        if ( is_array( $options ) && count( $options ) == 3 && $options[2] == "disabled" ) {
             return "disabled";
         }
         return "";
@@ -74,7 +74,7 @@ if ( !function_exists( 'ftg_p' ) ) {
     
     function ftg_printFieldPro( $options )
     {
-        if ( count( $options ) == 3 && $options[2] == "disabled" ) {
+        if ( is_array( $options ) && count( $options ) == 3 && $options[2] == "disabled" ) {
             return " (upgrade to unlock)";
         }
         return "";
@@ -289,7 +289,7 @@ foreach ( $ftg_fields as $section => $s ) {
                     } else {
                         ?>
 										<div class="card-panel yellow lighten-3">
-											EverlightBox not installed. <a target="_blank" href="plugin-install.php?s=everlightbox&tab=search&type=term">Install</a>
+											EverlightBox not installed. <a target="_blank" class="open-checkout" href="https://checkout.freemius.com/mode/dialog/plugin/1981/plan/2954/">Purchase</a>
 										</div>
 									<?php 
                     }
@@ -676,6 +676,33 @@ ftg_sel( $gallery, "taxonomyOperator", "AND" );
 ?> value="AND">AND: all posts matching all the selected taxonomies</option>
 						</select>
 					</div>
+					<div class="row">
+						<label>Taxonomy as filter</label>
+						<select name="ftg_taxonomyAsFilter" class="browser-default js-ajax-loading-control">
+							<option></option>
+							<?php 
+foreach ( get_taxonomies( array(), "objects" ) as $taxonomy => $t ) {
+    ?>
+								<?php 
+    
+    if ( $t->publicly_queryable ) {
+        ?>								
+								<option <?php 
+        ftg_sel( $gallery, "taxonomyAsFilter", $t->label );
+        ?> value="<?php 
+        _e( $t->label );
+        ?>"><?php 
+        _e( $t->label );
+        ?></option>
+								<?php 
+    }
+    
+    ?>
+							<?php 
+}
+?>
+						</select>						
+					</div>
 					<div class="row checkboxes">
 						<strong class="label"><?php 
 _e( 'Post type:', 'final-tiles-gallery' );
@@ -848,16 +875,13 @@ if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', g
 					</div>
 
 					<div class="row checkboxes">
-						<strong class="label"><?php 
-    print_r( $t );
-    ?></strong>
+						<strong class="label"></strong>
 							<span>
 								<?php 
     $idx = 0;
     ?>
 								<?php 
     foreach ( $woo_categories as $c ) {
-        print_r( $c );
         ?>
 									<input id="woo-cat-<?php 
         _e( $idx );
@@ -1180,7 +1204,7 @@ ftg_p( $gallery, "wp_field_caption" );
 			}
 		});
 		
-<?php 
+		<?php 
 ?>
 
 	})(jQuery);

@@ -6,7 +6,7 @@ if (!class_exists("FinalTilesGallery"))
 	{
 		global $wpdb;
 		
-		$FinalTilesImages = $wpdb->FinalTilesImages;
+		$FinalTilesImages = $wpdb->prefix . 'FinalTiles_gallery_images';
 		
 		$sql1 = "ALTER TABLE  $FinalTilesImages DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci";
 		$sql2 = "ALTER TABLE  $FinalTilesImages CHANGE  `description`  `description` LONGTEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL";
@@ -19,7 +19,7 @@ if (!class_exists("FinalTilesGallery"))
 	{
 	    global $wpdb;
 		
-		$FinalTilesGalleries = $wpdb->FinalTilesGalleries;
+		$FinalTilesGalleries = $wpdb->prefix . 'FinalTiles_gallery';
 		
 	    $fields = array("name", "slug", "description", "filters", "width", "margin", "minTileWidth", "gridCellSize", "imageSizeFactor",
 	                    "lightbox", "hoverEffect", "hoverColor", "hoverOpacity", "hoverEffectDuration", "hoverEasing", "scrollEffect",
@@ -36,8 +36,8 @@ if (!class_exists("FinalTilesGallery"))
 	{
 	  global $wpdb;			  
 
-	  $FinalTilesGalleries = $wpdb->FinalTilesGalleries;
-	  $FinalTilesImages = $wpdb->FinalTilesImages;
+	  $FinalTilesGalleries = $wpdb->prefix . 'FinalTiles_gallery';
+	  $FinalTilesImages = $wpdb->prefix . 'FinalTiles_gallery_images';
 	  
 	  
 	  require_once(ABSPATH . 'wp-admin/includes/upgrade.php');

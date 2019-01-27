@@ -3,7 +3,7 @@ Contributors: GreenTreeLabs, freemius
 Donate link: http://amzn.eu/5SP6qpj
 Tags: gallery, grid gallery, best gallery plugin, free gallery, gallery plugin, gallery grid plugin, masonry, photo gallery, image gallery, social gallery, portfolio gallery, lightbox, justified gallery
 Requires at least: 3.8.2
-Tested up to: 4.9.2
+Tested up to: 4.9.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -115,7 +115,7 @@ Currently galleries made with Envira, FooGallery, Instagram, NextGen, JetPack, M
 
 = How can I get support? =
 
-* Get priority support with a PRO license: http://www.final-tiles-gallery.com/wordpress/pro.html
+* Get priority support with a PRO license: http://www.final-tiles-gallery.com/wordpress/pricing
 
 = How can I say thanks? =
 
@@ -134,6 +134,28 @@ Currently galleries made with Envira, FooGallery, Instagram, NextGen, JetPack, M
 6. 52 pages documentation
 
 == Changelog ==
+
+= 3.3.52 =
+* [Fix] Fixed database installation
+
+= 3.3.51 =
+* [Fix] Fixed issue when loading images
+
+= 3.3.50 =
+* [Fix] Fixed DB issue of 3.3.49
+
+= 3.3.49 =
+* [Fix] Fixed multisite activation
+
+= 3.3.46 =
+* [Enhancement] Better compatibility with external lazy loading scripts
+
+= 3.3.45 =
+* [Fix] Fixed lazy loading bug
+
+= 3.3.43 =
+* Admin UI tweaks
+* Updated Freemius library
 
 = 3.3.37 =
 * Added links to PhotoBlocks Grid Gallery
@@ -270,6 +292,18 @@ Currently galleries made with Envira, FooGallery, Instagram, NextGen, JetPack, M
 * First release
 
 == Upgrade Notice ==
+
+= 3.3.52 =
+* [Fix] Fixed database installation
+
+= 3.3.51 =
+* [Fix] Fixed issue when loading images
+
+= 3.3.50 =
+* [Fix] Fixed DB issue of 3.3.49
+
+= 3.3.46 =
+* [Enhancement] Better compatibility with external lazy loading scripts
 
 = 3.3.36 =
 * [Enhancement] PHP 7.1 compatibility
